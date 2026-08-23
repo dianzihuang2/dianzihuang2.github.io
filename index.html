@@ -635,7 +635,8 @@ h1 {
   display: block;
 }
 
-.link-card h3 {
+.link-card h3,
+.link-card h4 {
   margin-bottom: 3px;
   font-size: 18px;
   overflow-wrap: anywhere;
@@ -788,6 +789,115 @@ h1 {
   min-width: 0;
 }
 
+.card-grid.is-grouped {
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.ai-group {
+  min-width: 0;
+}
+
+.ai-group-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
+.ai-group-heading h3,
+.ai-group-heading p {
+  margin: 0;
+}
+
+.ai-group-heading h3 {
+  font-size: 20px;
+}
+
+.ai-group-heading p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.ai-group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.ranking-methodology {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 113, 227, 0.14);
+  border-radius: 16px;
+  background: rgba(239, 247, 255, 0.82);
+}
+
+.ranking-methodology[hidden] {
+  display: none;
+}
+
+.ranking-methodology p {
+  margin: 0;
+  color: #424245;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ranking-source-links,
+.ranking-evidence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ranking-source-links a,
+.ranking-evidence a,
+.ranking-badge,
+.best-for {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ranking-source-links a,
+.ranking-evidence a {
+  background: #ffffff;
+  color: var(--blue);
+}
+
+.ranking-badge {
+  margin-left: auto;
+  background: #1d1d1f;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.best-for {
+  width: fit-content;
+  margin: -3px 0 10px;
+  background: rgba(52, 199, 89, 0.1);
+  color: #167c35;
+}
+
+.ranking-note {
+  margin: 0 0 8px !important;
+  color: #424245 !important;
+  font-size: 12px !important;
+}
+
+.ranking-evidence {
+  margin: 0 0 12px;
+}
+
 .link-card {
   min-height: 0;
   display: flex;
@@ -802,6 +912,158 @@ h1 {
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
+}
+
+.card-heading {
+  min-width: 0;
+  flex: 1;
+}
+
+.card-top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.card-top-actions .ranking-badge {
+  margin-left: 0;
+}
+
+.download-trigger {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 113, 227, 0.28);
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.08);
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.download-trigger:hover {
+  border-color: rgba(0, 113, 227, 0.48);
+  background: rgba(0, 113, 227, 0.14);
+}
+
+.download-dialog {
+  width: min(680px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  padding: 0;
+  overflow: auto;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 22px;
+  background: #ffffff;
+  color: var(--text);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.28);
+}
+
+.download-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(8px);
+}
+
+.download-dialog-header,
+.download-dialog-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+}
+
+.download-dialog-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.download-dialog-header h2,
+.download-option h3 {
+  margin: 0;
+}
+
+.download-dialog-header p,
+.download-option p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.download-close {
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 50%;
+  background: #f0f0f2;
+  color: #424245;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.download-dialog-body {
+  padding: 18px 20px;
+}
+
+.download-help {
+  margin: 0 0 14px;
+  color: #424245;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.download-list {
+  display: grid;
+  gap: 10px;
+}
+
+.download-option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 14px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fbfbfd;
+}
+
+.download-link {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.download-checksum {
+  grid-column: 1 / -1;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.download-checksum a,
+.download-dialog-footer a {
+  color: var(--blue);
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.download-dialog-footer {
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  background: #f5f5f7;
+  font-size: 13px;
 }
 
 .link-card .app-icon {
@@ -1033,6 +1295,10 @@ code {
     grid-template-columns: 1fr;
   }
 
+  .ai-group-grid {
+    grid-template-columns: 1fr;
+  }
+
   .content-layout {
     grid-template-columns: 1fr;
   }
@@ -1108,6 +1374,25 @@ code {
     width: 100%;
     flex: none;
   }
+
+  .card-top {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .card-top-actions {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 58px;
+  }
+
+  .download-option {
+    grid-template-columns: 1fr;
+  }
+
+  .download-link {
+    width: 100%;
+  }
 }
 
 html.is-tablet {
@@ -1130,6 +1415,14 @@ html.is-tablet .promo-banner {
 }
 
 html.is-tablet .card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+html.is-tablet .card-grid.is-grouped {
+  grid-template-columns: 1fr;
+}
+
+html.is-tablet .ai-group-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -1189,8 +1482,17 @@ html.is-mobile .promo-banner em {
 
 html.is-mobile .stats-row,
 html.is-mobile .card-grid,
+html.is-mobile .ai-group-grid,
 html.is-mobile .tips-section {
   grid-template-columns: 1fr;
+}
+
+html.is-mobile .ai-group-heading {
+  display: block;
+}
+
+html.is-mobile .ai-group-heading p {
+  margin-top: 3px;
 }
 
 html.is-mobile .section-heading {
@@ -1295,6 +1597,17 @@ html.is-mobile .copy-button {
             <button class="filter-pill" type="button" data-filter="music-ai" role="tab" aria-selected="false">音乐 AI</button>
           </div>
 
+          <aside class="ranking-methodology" id="ranking-methodology" aria-label="AI 排名说明" hidden>
+            <p><strong>能力推荐说明：</strong>同一用途内优先比较当前模型或产品能力；通用助手以 Artificial Analysis 独立基准和 Arena 用户盲测为主，再考虑消费端实际开放模型、功能完整度和访问限制。流量榜仅作为普及度参考，不参与能力主排序，数据核验于 2026-08-23。</p>
+            <div class="ranking-source-links" aria-label="主要排名来源">
+              <a href="https://arena.ai/leaderboard/text?styleControl=off" target="_blank" rel="noopener noreferrer">Arena 文本榜</a>
+              <a href="https://artificialanalysis.ai/models" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>
+              <a href="https://arena.ai/leaderboard/video-edit" target="_blank" rel="noopener noreferrer">Arena 视频榜</a>
+              <a href="https://a16z.com/100-gen-ai-apps-6/" target="_blank" rel="noopener noreferrer">a16z 2026 Top 100</a>
+              <a href="https://www.similarweb.com/top-websites/ai-chatbots-and-tools/" target="_blank" rel="noopener noreferrer">Similarweb 2026-07</a>
+            </div>
+          </aside>
+
           <div class="card-grid" id="card-grid" aria-live="polite"></div>
           <p class="empty-state" id="empty-state" hidden>没有匹配的网址入口。</p>
         </section>
@@ -1315,6 +1628,27 @@ html.is-mobile .copy-button {
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script>
+const AI_VERIFIED_AT = "2026-08-23";
+const aiCategories = new Set(["china-ai", "global-ai", "music-ai"]);
+const rankingSources = {
+  similarweb: { label: "Similarweb 2026-07", url: "https://www.similarweb.com/top-websites/ai-chatbots-and-tools/" },
+  arenaText: { label: "Arena 文本榜", url: "https://arena.ai/leaderboard/text?styleControl=off" },
+  artificialAnalysis: { label: "Artificial Analysis", url: "https://artificialanalysis.ai/models" },
+  arenaVideo: { label: "Arena 视频榜", url: "https://arena.ai/leaderboard/video-edit" },
+  a16z: { label: "a16z 2026 Top 100", url: "https://a16z.com/100-gen-ai-apps-6/" },
+  geminiNotebook: { label: "Google 更名公告", url: "https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/" },
+  sunoStudio: { label: "Suno Studio 2.0", url: "https://hcaptcha-endpoint-prod.suno.com/blog/studio-2" },
+  elevenMusic: { label: "Music v2", url: "https://elevenlabs.io/blog/introducing-music-v2" },
+  geminiLyria: { label: "Google Lyria", url: "https://blog.google/intl/en-ie/products/lyria-3/" },
+  udioLimits: { label: "Udio 下载限制", url: "https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership" },
+};
+
+const aiGroupOrder = {
+  "china-ai": ["通用助手", "搜索研究", "教育语音", "图像视频"],
+  "global-ai": ["通用助手", "研究知识", "Agent", "编程建站", "图像设计", "视频创作", "办公展示", "语音"],
+  "music-ai": ["完整歌曲", "配乐素材"],
+};
+
 const officialLinks = [
   {
     name: "Chrome",
@@ -1345,6 +1679,168 @@ const officialLinks = [
     initials: "CV",
     color: "linear-gradient(135deg, #4f46e5, #06b6d4)",
     pinned: true,
+    downloadInfo: {
+      version: "2.5.2",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/clash-verge-rev-v2.5.2",
+      upstreamUrl: "https://github.com/clash-verge-rev/clash-verge-rev/releases/tag/v2.5.2",
+      note: "CNB 不接受 EXE/DMG 网页附件，下载 ZIP 后解压。Windows x64 与 macOS Apple 芯片是两个不同平台。",
+      files: [
+        {
+          label: "Windows x64",
+          platform: "Windows",
+          architecture: "x64（Intel / AMD）",
+          format: "ZIP（内含 EXE）",
+          size: "44.79 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/887eb89e-4e75-4c29-bba6-aba6e339e156/Clash.Verge_2.5.2_x64-setup.exe.zip",
+          checksum: "a1c9a8b41f1681f8e2d7a233cbd2a5539b692c58311ea256513316f7c3e65b48",
+        },
+        {
+          label: "macOS Apple 芯片",
+          platform: "macOS",
+          architecture: "ARM64（Apple M 系列）",
+          format: "ZIP（内含 DMG）",
+          size: "58.11 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/0582b98d-0566-445a-b8aa-d32ccdfc5098/Clash.Verge_2.5.2_aarch64.dmg.zip",
+          checksum: "f9563708ab117616eb7b07995108dfd730e152dec03d226bf17eec54a5eedf89",
+        },
+      ],
+    },
+  },
+  {
+    name: "FlClash",
+    description: "基于 Clash.Meta 的开源多平台代理客户端，安卓端界面简洁，支持订阅、规则和多种代理协议。",
+    url: "https://github.com/chen08209/FlClash/releases/",
+    category: "network",
+    categoryLabel: "网络工具",
+    productType: "Android 代理客户端",
+    coreVersion: "Clash.Meta / Mihomo",
+    iconUrl: "assets/icons/flclash.png",
+    initials: "FC",
+    color: "linear-gradient(135deg, #6366f1, #3b82f6)",
+    downloadInfo: {
+      version: "0.8.96",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/flclash-v0.8.96",
+      upstreamUrl: "https://github.com/chen08209/FlClash/releases/tag/v0.8.96",
+      note: "下载 ZIP 后解压。Windows x64 适合常见 Intel / AMD 电脑；Android ARM64 适合大多数近年安卓手机。",
+      files: [
+        {
+          label: "Windows x64",
+          platform: "Windows",
+          architecture: "x64（Intel / AMD）",
+          format: "ZIP（内含 EXE 与许可证）",
+          size: "35.55 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/007a5de8-363d-4d7c-97f8-3170ced4b047/FlClash-0.8.96-windows-amd64-setup.exe.zip",
+          checksum: "9542e48660d75c8f625e10061b37a35664aac48c85ea741a45b04c0cf087cda5",
+        },
+        {
+          label: "Android ARM64",
+          platform: "Android",
+          architecture: "ARM64（arm64-v8a）",
+          format: "ZIP（内含 APK 与许可证）",
+          size: "50.61 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/75e2c449-5c43-45bd-a471-892114d01ed4/FlClash-0.8.96-android-arm64-v8a.apk.zip",
+          checksum: "c58606f398125bc70d866716550ae89e980ae5a838ccdd7c82ca822496aa4870",
+        },
+      ],
+    },
+  },
+  {
+    name: "v2rayNG",
+    description: "基于 Xray-core 的开源 Android 代理客户端，适合 VLESS、VMess、Trojan 和 Shadowsocks 配置。",
+    url: "https://github.com/2dust/v2rayNG/releases/",
+    category: "network",
+    categoryLabel: "网络工具",
+    productType: "Android 代理客户端",
+    coreVersion: "Xray-core",
+    iconUrl: "assets/icons/v2rayng.png",
+    initials: "V2",
+    color: "linear-gradient(135deg, #111827, #4b5563)",
+    downloadInfo: {
+      version: "2.3.5（预发布）",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/v2rayng-2.3.5",
+      upstreamUrl: "https://github.com/2dust/v2rayNG/releases/tag/2.3.5",
+      note: "上游将 2.3.5 标记为预发布。下载 ZIP 后解压，当前提供 F-Droid 构建的 Android ARM64 版本。",
+      files: [
+        {
+          label: "Android ARM64（F-Droid）",
+          platform: "Android",
+          architecture: "ARM64（arm64-v8a）",
+          format: "ZIP（内含 APK 与许可证）",
+          size: "30.19 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/3a000c6f-d7fb-4e79-9b34-12be924c1434/v2rayNG_2.3.5-fdroid_arm64-v8a.apk.zip",
+          checksum: "f5e7b124f639527f79ff833a10720682a8d4011a1dea56345a2d1d9e0c550af5",
+        },
+      ],
+    },
+  },
+  {
+    name: "Hiddify",
+    description: "开源跨平台代理客户端，官方 Release 提供 Android、Windows、macOS 和 Linux 版本。",
+    url: "https://github.com/hiddify/hiddify-app/releases/",
+    category: "network",
+    categoryLabel: "网络工具",
+    productType: "跨平台代理客户端",
+    iconUrl: "assets/icons/hiddify.png",
+    initials: "Hi",
+    color: "linear-gradient(135deg, #3157e6, #6d8cff)",
+  },
+  {
+    name: "sing-box for Android",
+    description: "sing-box 官方 Android 客户端，可管理本地或远程配置，并通过 TUN 提供系统代理。",
+    url: "https://sing-box.sagernet.org/clients/android/",
+    category: "network",
+    categoryLabel: "网络工具",
+    productType: "Android 代理客户端",
+    coreVersion: "sing-box",
+    iconUrl: "assets/icons/sing-box.svg",
+    initials: "SB",
+    color: "linear-gradient(135deg, #1f2937, #64748b)",
+    downloadInfo: {
+      version: "1.13.19",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/sing-box-1.13.19",
+      upstreamUrl: "https://github.com/SagerNet/sing-box/releases/tag/v1.13.19",
+      note: "官方未修改安装包镜像，与 SagerNet 项目无隶属或合作关系。下载 ZIP 后解压。",
+      files: [
+        {
+          label: "Android ARM64",
+          platform: "Android",
+          architecture: "ARM64（arm64-v8a）",
+          format: "ZIP（内含 APK 与许可证）",
+          size: "25.31 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/123f2d0a-1b71-4231-a264-5bc4d4342a4d/SFA-1.13.19-arm64-v8a.apk.zip",
+          checksum: "53f19b2ef4769e16b1d0cd514318cd5023f9506477dfef3c28324688ab35b289",
+        },
+      ],
+    },
+  },
+  {
+    name: "Clash Meta for Android",
+    description: "Clash.Meta 的开源 Android 图形客户端，支持规则分流、订阅导入和多种处理器架构。",
+    url: "https://github.com/MetaCubeX/ClashMetaForAndroid/releases/",
+    category: "network",
+    categoryLabel: "网络工具",
+    productType: "Android 代理客户端",
+    coreVersion: "Clash.Meta / Mihomo",
+    iconUrl: "assets/icons/clash-meta-for-android.png",
+    initials: "CM",
+    color: "linear-gradient(135deg, #1e3a5f, #3b82f6)",
+    downloadInfo: {
+      version: "2.11.33",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/cmfa-v2.11.33",
+      upstreamUrl: "https://github.com/MetaCubeX/ClashMetaForAndroid/releases/tag/v2.11.33",
+      note: "下载 ZIP 后解压，当前提供 Android ARM64 版本。",
+      files: [
+        {
+          label: "Android ARM64",
+          platform: "Android",
+          architecture: "ARM64（arm64-v8a）",
+          format: "ZIP（内含 APK 与许可证）",
+          size: "40.93 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/58813f2d-5d16-442d-a250-c746ae6e34b8/cmfa-2.11.33-meta-arm64-v8a-release.apk.zip",
+          checksum: "3e8abb179c04ebaa45d6bec6efe21898654fcb66ebe7519a948d1743fc6e2566",
+        },
+      ],
+    },
   },
   {
     name: "DeepSeek",
@@ -1354,6 +1850,12 @@ const officialLinks = [
     url: "https://chat.deepseek.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "通用助手",
+    recommendationRank: 4,
+    bestFor: "适合：中文推理、数学、代码与技术问答",
+    rankingNote: "DeepSeek V4 Pro 位列 Artificial Analysis 开放权重模型第 3，复杂推理和代码仍具优势。",
+    sourceIds: ["artificialAnalysis", "arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "DS",
     color: "linear-gradient(135deg, #101828, #4b5563)",
     pinned: true,
@@ -1366,6 +1868,12 @@ const officialLinks = [
     url: "https://www.kimi.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "通用助手",
+    recommendationRank: 1,
+    bestFor: "适合：长文档、资料研究和复杂中文任务",
+    rankingNote: "Kimi K3 位列 Artificial Analysis 开放权重模型第 1，并进入 Arena 综合榜前 10。",
+    sourceIds: ["artificialAnalysis", "arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Ki",
     color: "linear-gradient(135deg, #0f766e, #22c55e)",
     pinned: true,
@@ -1378,6 +1886,12 @@ const officialLinks = [
     url: "https://www.doubao.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "通用助手",
+    recommendationRank: 6,
+    bestFor: "适合：日常问答、写作、学习和多模态创作",
+    rankingNote: "字节 Seed 系列在 Arena 表现较强，但消费端开放模型与榜单版本可能不同。",
+    sourceIds: ["arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "DB",
     color: "linear-gradient(135deg, #2563eb, #7c3aed)",
   },
@@ -1389,6 +1903,13 @@ const officialLinks = [
     url: "https://www.qianwen.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "通用助手",
+    recommendationRank: 2,
+    bestFor: "适合：中文办公、通用问答和开发者生态",
+    rankingNote: "Qwen3.8 位列 Artificial Analysis 开放权重模型第 2，并进入 Arena 综合榜前 20。",
+    sourceIds: ["artificialAnalysis", "arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
+    aliases: ["通义千问", "Qwen"],
     initials: "QW",
     color: "linear-gradient(135deg, #ef4444, #f97316)",
   },
@@ -1400,6 +1921,13 @@ const officialLinks = [
     url: "https://yiyan.baidu.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "通用助手",
+    recommendationRank: 5,
+    bestFor: "适合：百度生态检索、中文问答和内容生成",
+    rankingNote: "ERNIE 5.1 进入 Arena 综合榜前 40，中文知识与搜索生态是额外优势。",
+    sourceIds: ["arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
+    aliases: ["文心一言", "ERNIE"],
     initials: "WX",
     color: "linear-gradient(135deg, #1d4ed8, #38bdf8)",
   },
@@ -1411,6 +1939,12 @@ const officialLinks = [
     url: "https://yuanbao.tencent.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "通用助手",
+    recommendationRank: 7,
+    bestFor: "适合：公众号资料、腾讯生态和文档阅读",
+    rankingNote: "腾讯 HY 系列在 Arena 有较强表现；元宝实际能力仍取决于当前路由模型。",
+    sourceIds: ["arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "YB",
     color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
   },
@@ -1422,6 +1956,12 @@ const officialLinks = [
     url: "https://xinghuo.xfyun.cn/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "教育语音",
+    recommendationRank: 1,
+    bestFor: "适合：语音转写、教育学习和办公生成",
+    rankingNote: "作为语音与教育专项工具推荐，不与通用助手直接比较。",
+    sourceIds: ["official"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "XH",
     color: "linear-gradient(135deg, #dc2626, #f59e0b)",
   },
@@ -1433,6 +1973,13 @@ const officialLinks = [
     url: "https://chatglm.cn/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "通用助手",
+    recommendationRank: 3,
+    bestFor: "适合：中文知识任务、多模态和开源模型用户",
+    rankingNote: "GLM-5.3 Max 进入 Arena 综合榜前 20，中文知识与推理能力突出。",
+    sourceIds: ["arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
+    aliases: ["GLM", "ChatGLM"],
     initials: "GLM",
     color: "linear-gradient(135deg, #7c3aed, #ec4899)",
   },
@@ -1444,19 +1991,32 @@ const officialLinks = [
     url: "https://metaso.cn/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "搜索研究",
+    recommendationRank: 2,
+    bestFor: "适合：中文检索、来源核验和调研提纲",
+    rankingNote: "按搜索结果组织、来源呈现和中文可用性综合推荐。",
+    sourceIds: ["official"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "MT",
     color: "linear-gradient(135deg, #059669, #14b8a6)",
   },
   {
-    name: "纳米 AI",
-    description: "面向搜索、问答和智能体场景的国内 AI 助手。",
-    strength: "入口简洁，适合中文搜索、资料汇总和轻量级智能助手使用。",
-    weakness: "品牌和生态成熟度不如头部平台，专业模型能力需要实测确认。",
-    url: "https://www.n.cn/",
+    name: "夸克",
+    description: "阿里旗下 AI 搜索、浏览器、网盘和文档工具一体化入口。",
+    strength: "国内访问方便，搜索、网页阅读、PDF、网盘和多端协同集中在一个产品中。",
+    weakness: "功能较多且部分体验依赖客户端，专业深度研究仍需交叉核验来源。",
+    url: "https://www.quark.cn/",
     category: "china-ai",
     categoryLabel: "国内 AI",
-    initials: "NM",
-    color: "linear-gradient(135deg, #0891b2, #84cc16)",
+    useCase: "搜索研究",
+    recommendationRank: 1,
+    bestFor: "适合：日常搜索、网页阅读、PDF 和资料管理",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，并以国内可用性优先推荐。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
+    aliases: ["Quark", "夸克 AI"],
+    initials: "QK",
+    color: "linear-gradient(135deg, #f97316, #2563eb)",
   },
   {
     name: "可灵 AI",
@@ -1466,6 +2026,12 @@ const officialLinks = [
     url: "https://klingai.kuaishou.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "图像视频",
+    recommendationRank: 3,
+    bestFor: "适合：短视频、分镜和高质量图生视频",
+    rankingNote: "Kling 模型进入 Arena 视频榜，消费级产品亦入选 a16z Top 100。",
+    sourceIds: ["arenaVideo", "a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "KL",
     color: "linear-gradient(135deg, #f97316, #db2777)",
   },
@@ -1477,6 +2043,13 @@ const officialLinks = [
     url: "https://jimeng.jianying.com/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "图像视频",
+    recommendationRank: 1,
+    bestFor: "适合：中文图像、视频素材和剪映创作链路",
+    rankingNote: "即梦 Seedance 模型位于 Arena 视频编辑榜前列。",
+    sourceIds: ["arenaVideo"],
+    verifiedAt: AI_VERIFIED_AT,
+    aliases: ["Dreamina", "Seedance"],
     initials: "JM",
     color: "linear-gradient(135deg, #111827, #f43f5e)",
   },
@@ -1488,6 +2061,12 @@ const officialLinks = [
     url: "https://hailuoai.video/",
     category: "china-ai",
     categoryLabel: "国内 AI",
+    useCase: "图像视频",
+    recommendationRank: 2,
+    bestFor: "适合：创意短片、图像动效和多模态素材",
+    rankingNote: "MiniMax 视频模型位于 Arena 视频编辑榜前列。",
+    sourceIds: ["arenaVideo", "a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "HL",
     color: "linear-gradient(135deg, #0f172a, #06b6d4)",
   },
@@ -1499,6 +2078,12 @@ const officialLinks = [
     url: "https://chatgpt.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "通用助手",
+    recommendationRank: 2,
+    bestFor: "适合：综合问答、写作、编程、图像和复杂任务",
+    rankingNote: "GPT-5.6 Sol 进入 Artificial Analysis 能力榜前 5，综合推理、代码和工具能力突出。",
+    sourceIds: ["artificialAnalysis", "arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "GPT",
     color: "linear-gradient(135deg, #111827, #10a37f)",
     pinned: true,
@@ -1511,6 +2096,12 @@ const officialLinks = [
     url: "https://claude.ai/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "通用助手",
+    recommendationRank: 1,
+    bestFor: "适合：长文档、英文写作、代码和知识工作",
+    rankingNote: "Claude Opus 5 系列领先 Artificial Analysis，Claude 模型同时占据 Arena 综合榜头部。",
+    sourceIds: ["artificialAnalysis", "arenaText"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Cl",
     color: "linear-gradient(135deg, #3f2a1d, #c08457)",
   },
@@ -1522,6 +2113,12 @@ const officialLinks = [
     url: "https://gemini.google.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "通用助手",
+    recommendationRank: 3,
+    bestFor: "适合：搜索、多模态、长上下文和 Google 生态",
+    rankingNote: "Gemini 最新模型进入 Arena 综合榜前 10，长上下文与多模态能力突出。",
+    sourceIds: ["arenaText", "artificialAnalysis"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Ge",
     color: "linear-gradient(135deg, #4285f4, #a142f4)",
     pinned: true,
@@ -1534,8 +2131,32 @@ const officialLinks = [
     url: "https://www.perplexity.ai/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "研究知识",
+    recommendationRank: 2,
+    bestFor: "适合：联网检索、快速调研和来源核验",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，搜索与引用是核心优势。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Px",
     color: "linear-gradient(135deg, #0f766e, #111827)",
+  },
+  {
+    name: "Gemini Notebook",
+    description: "Google 的来源驱动研究与学习工具，原名 NotebookLM。",
+    strength: "围绕用户资料生成摘要、问答和音频概览，回答能回到来源，研究链路清晰。",
+    weakness: "依赖 Google 账号且部分地区访问受限，来源本身有误时结果仍需人工判断。",
+    url: "https://notebooklm.google/NotebookLM",
+    category: "global-ai",
+    categoryLabel: "国外 AI",
+    useCase: "研究知识",
+    recommendationRank: 1,
+    bestFor: "适合：论文、课程、报告和私有资料研究",
+    rankingNote: "Google 于 2026-07 将 NotebookLM 正式更名为 Gemini Notebook。",
+    sourceIds: ["geminiNotebook", "a16z"],
+    verifiedAt: AI_VERIFIED_AT,
+    aliases: ["NotebookLM", "谷歌笔记本"],
+    initials: "GN",
+    color: "linear-gradient(135deg, #4285f4, #34a853)",
   },
   {
     name: "Microsoft Copilot",
@@ -1545,6 +2166,12 @@ const officialLinks = [
     url: "https://copilot.microsoft.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "通用助手",
+    recommendationRank: 6,
+    bestFor: "适合：Windows、Edge 和 Microsoft 365 工作流",
+    rankingNote: "Copilot 并非独立基础模型，实际能力取决于微软当前路由、使用模式和订阅版本。",
+    sourceIds: ["official"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Co",
     color: "linear-gradient(135deg, #2563eb, #22c55e)",
   },
@@ -1556,8 +2183,31 @@ const officialLinks = [
     url: "https://grok.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "通用助手",
+    recommendationRank: 4,
+    bestFor: "适合：热点追踪、X 平台信息和开放式对话",
+    rankingNote: "Grok 4.20 系列进入 Arena 综合榜前列，推理与实时信息场景能力较强。",
+    sourceIds: ["arenaText", "artificialAnalysis"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Gk",
     color: "linear-gradient(135deg, #000000, #525252)",
+  },
+  {
+    name: "Meta AI",
+    description: "Meta 推出的通用 AI 助手，与其社交和创作生态结合。",
+    strength: "通用问答、图片创作和 Meta 应用整合方便，移动端用户增长较快。",
+    weakness: "中国大陆不可直接使用，地区、账号和产品入口限制明显。",
+    url: "https://www.meta.ai/",
+    category: "global-ai",
+    categoryLabel: "国外 AI",
+    useCase: "通用助手",
+    recommendationRank: 5,
+    bestFor: "适合：Meta 生态用户和轻量日常创作",
+    rankingNote: "Meta 实验模型进入 Arena 头部，但 Meta AI 消费端未必完整开放同级模型。",
+    sourceIds: ["arenaText", "official"],
+    verifiedAt: AI_VERIFIED_AT,
+    initials: "Meta",
+    color: "linear-gradient(135deg, #0668e1, #7c3aed)",
   },
   {
     name: "Poe",
@@ -1567,19 +2217,48 @@ const officialLinks = [
     url: "https://poe.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "Agent",
+    recommendationRank: 3,
+    bestFor: "适合：一个入口对比多种模型和机器人",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，优势在多模型聚合。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Poe",
     color: "linear-gradient(135deg, #7c3aed, #2563eb)",
   },
   {
-    name: "Mistral Le Chat",
-    description: "Mistral AI 推出的聊天助手，基于欧洲大模型生态。",
-    strength: "速度快，开放模型生态强，适合轻量问答、代码和欧洲合规场景。",
-    weakness: "中文体验和消费级功能丰富度不如中美头部助手。",
-    url: "https://chat.mistral.ai/",
+    name: "Genspark",
+    description: "可完成研究、文档、表格、演示和多步骤任务的综合 AI Workspace。",
+    strength: "聚合多种模型并能直接交付报告、PPT、表格和网页，任务覆盖面广。",
+    weakness: "复杂任务消耗额度较快，聚合模型的效果和隐私边界需按具体工作流判断。",
+    url: "https://www.genspark.ai/",
     category: "global-ai",
     categoryLabel: "国外 AI",
-    initials: "Mi",
-    color: "linear-gradient(135deg, #f59e0b, #ef4444)",
+    useCase: "Agent",
+    recommendationRank: 1,
+    bestFor: "适合：调研、PPT、表格和跨工具任务",
+    rankingNote: "首次进入 a16z 2026 消费级 AI Top 100，Agent 工作流覆盖完整。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
+    initials: "GS",
+    color: "linear-gradient(135deg, #6d28d9, #06b6d4)",
+  },
+  {
+    name: "Manus",
+    description: "可自主执行研究、建站、演示和浏览器操作的通用 AI Agent。",
+    strength: "能把开放式需求拆解为多步骤任务并交付成品，适合减少重复操作。",
+    weakness: "高强度任务依赖额度和外部权限，处理敏感账号或文件前需谨慎授权。",
+    url: "https://manus.im/",
+    category: "global-ai",
+    categoryLabel: "国外 AI",
+    useCase: "Agent",
+    recommendationRank: 2,
+    bestFor: "适合：网站、演示、研究和浏览器自动化",
+    rankingNote: "连续进入 a16z 消费级 AI 榜单，是较成熟的通用 Agent 产品。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
+    initials: "Ma",
+    color: "linear-gradient(135deg, #111827, #4f46e5)",
   },
   {
     name: "Hugging Face",
@@ -1587,8 +2266,8 @@ const officialLinks = [
     strength: "开源模型资源最丰富之一，适合找模型、数据集、Demo 和开发资料。",
     weakness: "更偏开发者和研究者，普通用户直接上手门槛较高。",
     url: "https://huggingface.co/",
-    category: "global-ai",
-    categoryLabel: "国外 AI",
+    category: "dev",
+    categoryLabel: "开发工具",
     initials: "HF",
     color: "linear-gradient(135deg, #fbbf24, #fb923c)",
   },
@@ -1600,6 +2279,12 @@ const officialLinks = [
     url: "https://www.midjourney.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "图像设计",
+    recommendationRank: 1,
+    bestFor: "适合：海报、概念图和高审美风格化视觉",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，仍是专业图像创作代表产品。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "MJ",
     color: "linear-gradient(135deg, #111827, #8b5cf6)",
   },
@@ -1611,8 +2296,31 @@ const officialLinks = [
     url: "https://runwayml.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "视频创作",
+    recommendationRank: 1,
+    bestFor: "适合：短片、广告和 AI 视频编辑工作流",
+    rankingNote: "Runway 模型进入 Arena 视频榜，产品工作流成熟。",
+    sourceIds: ["arenaVideo", "a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "RW",
     color: "linear-gradient(135deg, #171717, #737373)",
+  },
+  {
+    name: "Higgsfield",
+    description: "面向广告、社媒和电影感镜头的 AI 视频创作平台。",
+    strength: "镜头运动、人物表现和短视频模板丰富，适合快速制作视觉冲击力强的内容。",
+    weakness: "高级模型和高质量输出成本较高，复杂长片仍需要剪辑与一致性控制。",
+    url: "https://higgsfield.ai/",
+    category: "global-ai",
+    categoryLabel: "国外 AI",
+    useCase: "视频创作",
+    recommendationRank: 2,
+    bestFor: "适合：广告镜头、人物短片和社媒视频",
+    rankingNote: "新进入 a16z 2026 消费级 AI Top 100 的视频创作产品。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
+    initials: "Hi",
+    color: "linear-gradient(135deg, #111827, #ec4899)",
   },
   {
     name: "Canva AI",
@@ -1622,6 +2330,12 @@ const officialLinks = [
     url: "https://www.canva.com/canva-ai/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "图像设计",
+    recommendationRank: 2,
+    bestFor: "适合：非设计师制作海报、PPT 和社媒素材",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，模板与团队协作优势明显。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Ca",
     color: "linear-gradient(135deg, #00c4cc, #7d2ae8)",
   },
@@ -1633,6 +2347,12 @@ const officialLinks = [
     url: "https://elevenlabs.io/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "语音",
+    recommendationRank: 1,
+    bestFor: "适合：多语言配音、声音克隆和语音 Agent",
+    rankingNote: "连续入选 a16z 消费级 AI 榜单，语音能力具有明确专业优势。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "11",
     color: "linear-gradient(135deg, #111827, #64748b)",
   },
@@ -1644,6 +2364,12 @@ const officialLinks = [
     url: "https://suno.com/",
     category: "music-ai",
     categoryLabel: "音乐 AI",
+    useCase: "完整歌曲",
+    recommendationRank: 1,
+    bestFor: "适合：快速生成完整歌曲、Demo 和短视频配乐",
+    rankingNote: "a16z 2026 消费级 AI Web 榜第 15，Studio 2.0 已加入 MIDI 与更深编辑能力。",
+    sourceIds: ["a16z", "sunoStudio"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Su",
     color: "linear-gradient(135deg, #f97316, #7c2d12)",
   },
@@ -1651,10 +2377,16 @@ const officialLinks = [
     name: "Udio",
     description: "面向歌曲生成、歌词创作和音频延展的 AI 音乐平台。",
     strength: "人声表现和风格提示可玩性强，适合生成歌曲片段、完整歌曲和音乐灵感。",
-    weakness: "下载、授权和可用功能会随平台政策变化，商用前必须查看官网条款。",
+    weakness: "当前不能下载音频、视频或分轨，平台正处于授权合作后的产品过渡期。",
     url: "https://www.udio.com/",
     category: "music-ai",
     categoryLabel: "音乐 AI",
+    useCase: "完整歌曲",
+    recommendationRank: 3,
+    bestFor: "适合：人声、风格实验和歌曲片段迭代",
+    rankingNote: "生成与编辑能力仍可用，但官方已明确禁用音频、视频和分轨下载。",
+    sourceIds: ["udioLimits"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Ud",
     color: "linear-gradient(135deg, #111827, #7c3aed)",
   },
@@ -1666,6 +2398,12 @@ const officialLinks = [
     url: "https://stableaudio.com/",
     category: "music-ai",
     categoryLabel: "音乐 AI",
+    useCase: "配乐素材",
+    recommendationRank: 1,
+    bestFor: "适合：器乐配乐、氛围音和声音设计",
+    rankingNote: "按素材生成定位、音效能力和专业工作流适配度推荐。",
+    sourceIds: ["official"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "SA",
     color: "linear-gradient(135deg, #0f172a, #8b5cf6)",
   },
@@ -1677,6 +2415,12 @@ const officialLinks = [
     url: "https://elevenlabs.io/music",
     category: "music-ai",
     categoryLabel: "音乐 AI",
+    useCase: "完整歌曲",
+    recommendationRank: 2,
+    bestFor: "适合：品牌、商用内容和多语言歌曲草稿",
+    rankingNote: "Music v2 于 2026 年更新，强调更强控制、多语言和授权合作。",
+    sourceIds: ["elevenMusic", "a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "11",
     color: "linear-gradient(135deg, #111827, #64748b)",
   },
@@ -1688,6 +2432,12 @@ const officialLinks = [
     url: "https://www.aiva.ai/",
     category: "music-ai",
     categoryLabel: "音乐 AI",
+    useCase: "配乐素材",
+    recommendationRank: 3,
+    bestFor: "适合：古典、管弦、影视和游戏配乐",
+    rankingNote: "按器乐配乐定位、MIDI 工作流和长期产品成熟度推荐。",
+    sourceIds: ["official"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "AI",
     color: "linear-gradient(135deg, #1e3a8a, #38bdf8)",
   },
@@ -1699,6 +2449,12 @@ const officialLinks = [
     url: "https://soundraw.io/",
     category: "music-ai",
     categoryLabel: "音乐 AI",
+    useCase: "配乐素材",
+    recommendationRank: 2,
+    bestFor: "适合：视频、播客和社媒免版税 BGM",
+    rankingNote: "按可编辑 BGM、创作者授权流程和上手效率推荐。",
+    sourceIds: ["official"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "SR",
     color: "linear-gradient(135deg, #06b6d4, #22c55e)",
   },
@@ -1710,29 +2466,31 @@ const officialLinks = [
     url: "https://mubert.ai/",
     category: "music-ai",
     categoryLabel: "音乐 AI",
+    useCase: "配乐素材",
+    recommendationRank: 4,
+    bestFor: "适合：直播、播客、游戏和场景化背景音乐",
+    rankingNote: "按实时与场景化生成能力、产品成熟度综合推荐。",
+    sourceIds: ["official"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Mu",
     color: "linear-gradient(135deg, #7c3aed, #ec4899)",
   },
   {
-    name: "Boomy",
-    description: "面向普通用户的生成式音乐创作平台。",
-    strength: "上手门槛低，适合快速生成歌曲草稿和尝试不同风格。",
-    weakness: "成品精修空间有限，发行、授权和收益相关规则需要逐条查看。",
-    url: "https://boomy.com/",
+    name: "Gemini 音乐（Lyria）",
+    description: "Google Gemini 内置的 Lyria 音乐生成入口，可由文字或图片创建音乐片段。",
+    strength: "与 Gemini 多模态入口结合，提示方式简单，并重视来源标记和版权合作。",
+    weakness: "生成长度、地区和账号可用性受限，不适合需要完整 DAW 控制的专业制作。",
+    url: "https://gemini.google.com/",
     category: "music-ai",
     categoryLabel: "音乐 AI",
-    initials: "Bo",
-    color: "linear-gradient(135deg, #f59e0b, #ef4444)",
-  },
-  {
-    name: "MusicFX",
-    description: "Google Labs 的实验性 AI 音乐生成工具。",
-    strength: "适合尝试 Google 音乐生成能力和快速生成创意音乐片段。",
-    weakness: "地区可用性受限，当前访问可能提示所在国家或地区不可用。",
-    url: "https://labs.google/fx/tools/music-fx",
-    category: "music-ai",
-    categoryLabel: "音乐 AI",
-    initials: "MF",
+    useCase: "完整歌曲",
+    recommendationRank: 4,
+    bestFor: "适合：Gemini 用户快速生成短音乐片段",
+    rankingNote: "Google 已将 Lyria 生成能力整合进 Gemini，替代旧 MusicFX 推荐入口。",
+    sourceIds: ["geminiLyria"],
+    verifiedAt: AI_VERIFIED_AT,
+    aliases: ["MusicFX", "Lyria", "Google 音乐"],
+    initials: "Ly",
     color: "linear-gradient(135deg, #4285f4, #34a853)",
   },
   {
@@ -1743,6 +2501,12 @@ const officialLinks = [
     url: "https://cursor.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "编程建站",
+    recommendationRank: 1,
+    bestFor: "适合：真实代码项目、补全和项目级修改",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，开发者使用场景成熟。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Cu",
     color: "linear-gradient(135deg, #111827, #2563eb)",
   },
@@ -1754,8 +2518,31 @@ const officialLinks = [
     url: "https://replit.com/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "编程建站",
+    recommendationRank: 2,
+    bestFor: "适合：浏览器内生成、运行和发布轻量应用",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，原型到发布链路完整。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Re",
     color: "linear-gradient(135deg, #f97316, #111827)",
+  },
+  {
+    name: "Lovable",
+    description: "通过自然语言生成和迭代 Web 应用的 AI 建站平台。",
+    strength: "从需求到可运行前端速度快，适合无代码原型、落地页和小型产品验证。",
+    weakness: "复杂后端、安全和长期维护仍需要开发经验，生成代码必须人工审查。",
+    url: "https://lovable.dev/",
+    category: "global-ai",
+    categoryLabel: "国外 AI",
+    useCase: "编程建站",
+    recommendationRank: 3,
+    bestFor: "适合：无代码原型、落地页和轻量 Web 应用",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，面向非专业开发者的建站体验成熟。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
+    initials: "Lo",
+    color: "linear-gradient(135deg, #f43f5e, #7c3aed)",
   },
   {
     name: "Gamma",
@@ -1765,6 +2552,12 @@ const officialLinks = [
     url: "https://gamma.app/",
     category: "global-ai",
     categoryLabel: "国外 AI",
+    useCase: "办公展示",
+    recommendationRank: 1,
+    bestFor: "适合：快速生成 PPT、文档和轻量网页",
+    rankingNote: "入选 a16z 2026 消费级 AI Top 100，办公展示定位清晰。",
+    sourceIds: ["a16z"],
+    verifiedAt: AI_VERIFIED_AT,
     initials: "Ga",
     color: "linear-gradient(135deg, #6d28d9, #f97316)",
   },
@@ -1814,6 +2607,15 @@ const officialLinks = [
     color: "linear-gradient(135deg, #0db7ed, #2496ed)",
   },
   {
+    name: "图吧工具箱",
+    description: "面向 Windows 的硬件检测、性能测试和系统维护工具合集。",
+    url: "https://www.tbtool.cn/",
+    category: "dev",
+    categoryLabel: "开发工具",
+    initials: "图吧",
+    color: "linear-gradient(135deg, #2563eb, #0f172a)",
+  },
+  {
     name: "Git",
     description: "分布式版本控制系统，AI 编程工具读写代码仓库、查看差异和协作提交时常用。",
     url: "https://git-scm.com/downloads",
@@ -1848,6 +2650,24 @@ const officialLinks = [
     categoryLabel: "AI 依赖",
     initials: "rg",
     color: "linear-gradient(135deg, #111827, #f59e0b)",
+    downloadInfo: {
+      version: "15.2.0",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/ripgrep-15.2.0",
+      upstreamUrl: "https://github.com/BurntSushi/ripgrep/releases/tag/15.2.0",
+      note: "Windows 便携版，解压后运行 rg.exe。当前已上传 x64 版本。",
+      files: [
+        {
+          label: "Windows x64",
+          platform: "Windows",
+          architecture: "x64（Intel / AMD）",
+          format: "ZIP",
+          size: "1.71 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/releases/download/ripgrep-15.2.0/ripgrep-15.2.0-x86_64-pc-windows-msvc.zip",
+          checksum: "71b2fef860abe467217a538ff31de02f5258807c0129f771846f87bd029aafc5",
+          checksumUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/download/ripgrep-15.2.0/ripgrep-15.2.0-x86_64-pc-windows-msvc.zip.sha256",
+        },
+      ],
+    },
   },
   {
     name: "百度网盘",
@@ -1931,7 +2751,6 @@ const officialLinks = [
     category: "office",
     categoryLabel: "办公服务",
     initials: "365",
-    iconUrl: "https://www.office.com/favicon.ico",
     color: "linear-gradient(135deg, #f25022, #7fba00 45%, #00a4ef)",
   },
   {
@@ -1941,7 +2760,6 @@ const officialLinks = [
     category: "office",
     categoryLabel: "办公服务",
     initials: "XL",
-    iconUrl: "https://www.microsoft.com/favicon.ico?v2",
     color: "linear-gradient(135deg, #107c41, #21a366)",
   },
   {
@@ -1951,7 +2769,6 @@ const officialLinks = [
     category: "office",
     categoryLabel: "办公服务",
     initials: "LO",
-    iconUrl: "https://www.libreoffice.org/favicon.ico",
     color: "linear-gradient(135deg, #18a303, #0f6b2f)",
   },
   {
@@ -1983,6 +2800,7 @@ const totalCount = document.querySelector("#total-count");
 const categoryCount = document.querySelector("#category-count");
 const filterButtons = document.querySelectorAll(".filter-pill");
 const emptyState = document.querySelector("#empty-state");
+const rankingMethodology = document.querySelector("#ranking-methodology");
 const toast = document.querySelector("#toast");
 const searchForm = document.querySelector(".site-search");
 const searchInput = document.querySelector("#site-search-input");
@@ -1999,13 +2817,14 @@ let activePhotoIndex = 0;
 let previewTimer;
 let previewCard;
 let sitePreview;
+let downloadDialog;
 
 function domainFromUrl(url) {
   return new URL(url).hostname.replace(/^www\./, "");
 }
 
 function faviconFromUrl(url) {
-  return `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(url)}&size=64`;
+  return `assets/icons/${domainFromUrl(url).toLowerCase()}.png`;
 }
 
 function normalizeSearchText(value) {
@@ -2020,13 +2839,19 @@ function normalizeSearchText(value) {
 function searchableText(link) {
   return [
     link.name,
+    ...(link.aliases || []),
     domainFromUrl(link.url),
     link.url,
     link.description,
     link.strength,
     link.weakness,
+    link.useCase,
+    link.bestFor,
+    link.rankingNote,
     link.categoryLabel,
     link.initials,
+    link.downloadInfo?.version,
+    ...(link.downloadInfo?.files || []).flatMap((file) => [file.label, file.platform, file.architecture, file.format]),
   ].join(" ");
 }
 
@@ -2099,6 +2924,91 @@ function createAiProfile(link) {
   `;
 }
 
+function createRankingInfo(link) {
+  if (!link.recommendationRank) return "";
+
+  const sourceLinks = link.sourceIds
+    .map((sourceId) => sourceId === "official"
+      ? { label: "产品官网", url: link.url }
+      : rankingSources[sourceId])
+    .map((source) => `<a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.label}</a>`)
+    .join("");
+
+  return `
+    <span class="best-for">${link.bestFor}</span>
+    <p class="ranking-note"><strong>推荐依据：</strong>${link.rankingNote}</p>
+    <div class="ranking-evidence" aria-label="${link.name} 排名依据">
+      ${sourceLinks}
+      <span class="tag">核验于 ${link.verifiedAt}</span>
+    </div>
+  `;
+}
+
+function createCard(link, headingTag = "h3") {
+  const topActions = [
+    link.downloadInfo ? `<button class="download-trigger" type="button" data-download="${encodeURIComponent(link.name)}" aria-label="下载 ${link.name} 安装包">↓ 下载</button>` : "",
+    link.recommendationRank ? `<span class="ranking-badge">能力推荐 #${link.recommendationRank}</span>` : "",
+  ].join("");
+
+  return `
+    <article class="link-card${link.name === activeHighlightName ? " is-highlighted" : ""}" data-link-key="${encodeURIComponent(link.name)}">
+      <div class="card-top">
+        ${createIcon(link)}
+        <div class="card-heading">
+          <${headingTag}>${link.name}</${headingTag}>
+          <span class="domain">${domainFromUrl(link.url)}</span>
+        </div>
+        ${topActions ? `<div class="card-top-actions">${topActions}</div>` : ""}
+      </div>
+      <p>${link.description}</p>
+      ${createAiProfile(link)}
+      ${createRankingInfo(link)}
+      ${createActions(link)}
+      <div class="tag-row">
+        <span class="tag official">官方入口</span>
+        <span class="tag">${categoryNames[link.category]}</span>
+        ${link.useCase ? `<span class="tag">${link.useCase}</span>` : ""}
+        ${link.downloadInfo ? `<span class="tag">提供安装包</span>` : ""}
+      </div>
+    </article>
+  `;
+}
+
+function validateAiCatalog() {
+  const requiredFields = ["useCase", "recommendationRank", "bestFor", "rankingNote", "sourceIds", "verifiedAt"];
+  const ranks = new Set();
+
+  officialLinks.filter((link) => aiCategories.has(link.category)).forEach((link) => {
+    const missing = requiredFields.filter((field) => !link[field]);
+    if (missing.length) throw new Error(`${link.name} 缺少字段：${missing.join(", ")}`);
+    if (!aiGroupOrder[link.category].includes(link.useCase)) throw new Error(`${link.name} 的用途分组无效`);
+    if (!link.sourceIds.length || link.sourceIds.some((sourceId) => sourceId !== "official" && !rankingSources[sourceId])) {
+      throw new Error(`${link.name} 的排名来源无效`);
+    }
+
+    const rankKey = `${link.category}/${link.useCase}/${link.recommendationRank}`;
+    if (ranks.has(rankKey)) throw new Error(`${rankKey} 排名重复`);
+    ranks.add(rankKey);
+  });
+}
+
+function validateDownloadCatalog() {
+  officialLinks.filter((link) => link.downloadInfo).forEach((link) => {
+    const { version, releaseUrl, files } = link.downloadInfo;
+    if (!version || !releaseUrl || !files?.length) throw new Error(`${link.name} 的下载配置不完整`);
+
+    const labels = new Set();
+    files.forEach((file) => {
+      if (!file.label || !file.platform || !file.architecture || !file.format || !file.url) {
+        throw new Error(`${link.name} 存在不完整的安装包配置`);
+      }
+      if (labels.has(file.label)) throw new Error(`${link.name} 的安装包名称重复：${file.label}`);
+      labels.add(file.label);
+      if (new URL(file.url).protocol !== "https:") throw new Error(`${link.name} 的安装包必须使用 HTTPS`);
+    });
+  });
+}
+
 function renderCards() {
   closeSitePreview();
 
@@ -2107,28 +3017,32 @@ function renderCards() {
     return matchesCategory;
   });
 
-  cardGrid.innerHTML = filtered
-    .map(
-      (link) => `
-        <article class="link-card${link.name === activeHighlightName ? " is-highlighted" : ""}" data-link-key="${encodeURIComponent(link.name)}">
-          <div class="card-top">
-            ${createIcon(link)}
-            <div>
-              <h3>${link.name}</h3>
-              <span class="domain">${domainFromUrl(link.url)}</span>
+  const isAiFilter = aiCategories.has(activeFilter);
+  cardGrid.classList.toggle("is-grouped", isAiFilter);
+  rankingMethodology.hidden = !isAiFilter;
+
+  if (isAiFilter) {
+    cardGrid.innerHTML = aiGroupOrder[activeFilter]
+      .map((useCase) => {
+        const links = filtered
+          .filter((link) => link.useCase === useCase)
+          .sort((a, b) => a.recommendationRank - b.recommendationRank);
+        if (!links.length) return "";
+
+        return `
+          <section class="ai-group" aria-labelledby="${activeFilter}-${encodeURIComponent(useCase)}">
+            <div class="ai-group-heading">
+              <h3 id="${activeFilter}-${encodeURIComponent(useCase)}">${useCase}</h3>
+              <p>${links.length} 个精选入口 · 按能力推荐排序</p>
             </div>
-          </div>
-          <p>${link.description}</p>
-          ${createAiProfile(link)}
-          ${createActions(link)}
-          <div class="tag-row">
-            <span class="tag official">官方入口</span>
-            <span class="tag">${categoryNames[link.category]}</span>
-          </div>
-        </article>
-      `,
-    )
-    .join("");
+            <div class="ai-group-grid">${links.map((link) => createCard(link, "h4")).join("")}</div>
+          </section>
+        `;
+      })
+      .join("");
+  } else {
+    cardGrid.innerHTML = filtered.map((link) => createCard(link)).join("");
+  }
 
   emptyState.hidden = filtered.length > 0;
 }
@@ -2258,7 +3172,7 @@ function createPreviewDetails(link) {
   const rows = [
     ["分类", categoryNames[link.category] || link.categoryLabel],
     ["产品形态", inferProductType(link)],
-    ["最新版本", link.latestVersion || "以官网发布页为准"],
+    ["最新版本", link.downloadInfo?.version || link.latestVersion || "以官网发布页为准"],
     ["内核/基础", inferRuntimeInfo(link)],
     ["官网域名", domainFromUrl(link.url)],
   ];
@@ -2275,10 +3189,65 @@ function createPreviewDetails(link) {
   `;
 }
 
+function openDownloadDialog(link) {
+  closeSitePreview();
+  downloadDialog?.remove();
+  const info = link.downloadInfo;
+  const dialog = document.createElement("dialog");
+  downloadDialog = dialog;
+  dialog.className = "download-dialog";
+  dialog.setAttribute("aria-labelledby", "download-dialog-title");
+  dialog.innerHTML = `
+    <div class="download-dialog-header">
+      ${createIcon(link)}
+      <div>
+        <h2 id="download-dialog-title">${link.name} 安装包</h2>
+        <p>版本 ${info.version}</p>
+      </div>
+      <button class="download-close" type="button" aria-label="关闭下载窗口" autofocus>×</button>
+    </div>
+    <div class="download-dialog-body">
+      <p class="download-help">${info.note || "请选择与你的设备和处理器架构匹配的安装包。"}</p>
+      <div class="download-list">
+        ${info.files.map((file) => `
+          <section class="download-option">
+            <div>
+              <h3>${file.label}</h3>
+              <p>${file.platform} · ${file.architecture} · ${file.format}${file.size ? ` · ${file.size}` : ""}</p>
+            </div>
+            <a class="download-link" href="${file.url}" target="_blank" rel="noopener noreferrer">下载安装包</a>
+            ${file.checksum ? `<div class="download-checksum">SHA-256：${file.checksum}${file.checksumUrl ? ` · <a href="${file.checksumUrl}" target="_blank" rel="noopener noreferrer">校验文件</a>` : ""}</div>` : ""}
+          </section>
+        `).join("")}
+      </div>
+    </div>
+    <div class="download-dialog-footer">
+      <a href="${info.releaseUrl}" target="_blank" rel="noopener noreferrer">查看 CNB Release</a>
+      ${info.upstreamUrl ? `<a href="${info.upstreamUrl}" target="_blank" rel="noopener noreferrer">查看上游官方版本</a>` : ""}
+    </div>
+  `;
+  document.body.appendChild(dialog);
+  dialog.querySelector(".download-close").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("close", () => {
+    dialog.remove();
+    if (downloadDialog === dialog) downloadDialog = null;
+  }, { once: true });
+  dialog.showModal();
+}
+
 document.addEventListener("click", (event) => {
   const copyButton = event.target.closest("[data-copy]");
+  const downloadButton = event.target.closest("[data-download]");
   if (copyButton) {
     copyToClipboard(copyButton.dataset.copy);
+  }
+  if (downloadButton) {
+    const linkName = decodeURIComponent(downloadButton.dataset.download);
+    const link = officialLinks.find((item) => item.name === linkName);
+    if (link?.downloadInfo) openDownloadDialog(link);
   }
 });
 
@@ -2411,6 +3380,8 @@ searchInput.addEventListener("input", () => {
   }
 });
 
+validateAiCatalog();
+validateDownloadCatalog();
 totalCount.textContent = officialLinks.length;
 categoryCount.textContent = new Set(officialLinks.map((link) => link.category)).size;
 renderCards();
