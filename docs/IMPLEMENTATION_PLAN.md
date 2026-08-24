@@ -25,6 +25,9 @@
 17. 已完成：使用现有头像增加浏览器 favicon 与 Apple 主屏图标声明，不新增资源文件。
 18. 已完成：基于实际代码新增根目录中文 README，说明项目用途、结构、预览、托管和维护入口，不修改网站代码。
 19. 已完成：按用户授权提交 README 与必要状态文档并推送至 `origin/main`。
+20. 已完成：抓取当前 GitHub Pages 页面并核对远端提交，以 `origin/main` 的 `8b604eb` 统一本地网页源码。
+21. 已完成：保留独立 Sites 适配层，不修改线上版本的 HTML、CSS、数据和交互源码。
+22. 已完成：完成类型检查、安全审计、生产构建、Wrangler 路由和 Sites 打包验证。
 
 ## 文件范围
 
@@ -33,6 +36,7 @@
 - `styles.css`：页面样式。
 - `js/data.js`：网址、分类、排名和照片静态数据。
 - `js/app.js`：DOM 渲染与交互逻辑。
+- `app/route.ts`、`public/`、`.openai/hosting.json`、`vite.config.ts`、`package.json`：Sites 适配与构建入口。
 - `PROJECT_STATUS.md`、`docs/CONTEXT_INDEX.md`、`docs/IMPLEMENTATION_PLAN.md`、`docs/HANDOFF_CURRENT.md`：长项目状态与交接。
 
 ## 关键决定
@@ -49,3 +53,4 @@
 - 两段内嵌头像 Base64 均由 `assets/avatar.jpeg` 立即覆盖，直接删除重复数据并保留同一图片路径。
 - 速览与搜索继续共用 `focusHighlightedCard()`；定位函数统一更新 `activeHighlightName` 和卡片类名，避免两套高亮逻辑。
 - 回顶监听只在点击目标恰好是 `.site-header` 时触发，子元素链接继续使用原事件，不增加覆盖层。
+- Sites 适配不改动线上网页源码；响应时注入分享元数据，并复用 GitHub Pages 原视频以避开静态资源单文件限制。

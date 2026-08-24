@@ -1,50 +1,28 @@
 # 项目状态
 
-- 项目：烤鸭网址 / 烤鸭笔记静态站
-- 当前目标：为 GitHub 仓库首页提供面向访客和维护者的中文 README。
-- 当前阶段：网站版本保持不变，根目录 README 已按实际代码补充并推送至 `origin/main`；等待用户审阅。
-- Git：worktree 保持 detached HEAD；当前网站版本已推送至 `origin/main`，恢复时以实际 HEAD 为准。
+- 项目：烤鸭网址 / 烤鸭笔记
+- 当前目标：以线上 GitHub Pages 版本统一本地源码，同时保留可发布到 Sites 的适配层。
+- 当前阶段：网页源码已同步至 `origin/main` 的 `8b604eb`；Sites 构建与本地 Worker 验证通过，尚未部署。
+- Git：`main` 与 `origin/main` 指向同一提交；Sites 适配文件仍为未提交文件。
 
 ## 已完成
 
-- 右侧速览复用 `officialLinks`、`activeFilter`、`renderCards()` 和 `createIcon()`。
-- AI 分类沿用用途分组和组内推荐排名；其他分类沿用数据渲染顺序。
-- 速览项点击平滑定位对应卡片；搜索定位和分类切换行为保持不变。
-- 1080px 及以上使用独立右侧栏；更窄视口隐藏速览，避免挤压和横向溢出。
-- 视频条目使用播放符号作为无网址图标的备用标识。
-- 顶部改为单一主搜索框：默认搜索站内网址，Google GET 搜索降为输入框下方的次级操作并在独立标签页打开。
-- 正确图标改为创建后立即显示；仅在图片加载失败时显示备用标识，移除了 `onload/is-loaded` 二次切换。
-- 顶部推广区改为双列：左侧保留烤鸭自用节点，右侧新增 ToolKnit 在线工具箱及简短说明；手机端自动上下排列。
-- 顶部新增明确标题与说明，猫咪统计区缩为品牌辅助元素；推广入口改用整卡点击和轻量箭头，减少蓝色按钮竞争。
-- 页面拆为 `index.html`、`styles.css`、`js/data.js`、`js/app.js`；无构建工具、无新增依赖，经典脚本保持直接静态托管兼容。
-- 删除两份会被 `assets/avatar.jpeg` 立即覆盖的 Base64 头像，源码总量由约 504KB 降至约 111KB。
-- 点击右侧网站速览时，目标网站卡片会使用现有蓝色高亮样式并滚动到视口；切换目标会自动清除旧高亮。
-- 点击顶部栏中间的纯空白区域可平滑回到页面顶部；品牌与右侧导航仍保留原行为。
-- 浏览器标签图标与 Apple 主屏图标复用当前 `assets/avatar.jpeg` 头像。
-- 根目录新增 `README.md`，说明项目用途、主要功能、技术特点、真实目录结构、本地预览、静态托管和常用维护入口。
+- 抓取 `https://dianzihuang2.github.io/`，确认线上 `index.html` 与 `origin/main` 内容一致。
+- 本地 `main` 快进至 `8b604eb`；`index.html`、`styles.css`、`js/` 和 `assets/` 与线上对应版本保持一致。
+- 保留最小 Sites 适配：Vinext/Vite 构建、Cloudflare Worker 路由、社交分享元数据和静态资源映射。
+- Sites 构建不复制三个超过单文件限制的视频，运行时复用 GitHub Pages 上的原视频地址，页面内容和视频质量不变。
 
 ## 最近验证
 
-- `git diff --check`：通过。
-- 真实 Google Chrome：1160×577、1440×900、390×844 均已验证。
-- 11 个分类逐项验证：速览数量、图标数量、内容和 DOM 顺序均与卡片一致。
-- 已验证速览点击定位、页面最底部两侧栏仍固定在 70px、分类切换回顶、搜索高亮、视频布局、无重叠、无横向溢出；控制台无 warning/error。
-- 真实 Chromium 再验 1160×577、1440×900、390×844：刷新及 11 个分类逐项切换时图标状态正确，缺失资源备用标识正常，无横向溢出。
-- 真实 Chromium 验证 ToolKnit 横条：1440×900、1160×700 下位于节点横条右侧且无文字/按钮重叠；390×844 下改为单列，无横向溢出。
-- ToolKnit 链接为 `https://toolknit.com/`，使用 `_blank` 与 `noopener noreferrer`；浏览器控制台无 warning/error。
-- 真实 Chromium 验证新版顶部：1588×429 下标题、搜索、猫咪和两个推广入口同屏；390×844 下标题两行、猫咪统计横排、推广入口单列，无横向溢出。
-- 390×844 下站内搜索 `Chrome` 可正确切换分类、定位并高亮；Google 次级按钮保持 `GET`、`q` 参数和 `_blank`；控制台无 warning/error。
-- `node --check js/data.js`、`node --check js/app.js`、`git diff --check`：通过。
-- 本地 HTTP 实测：默认分类 6 张卡片，国外 AI 23 张卡片；搜索 `Chrome`、照片弹窗、头像弹窗均正常，390×844 无横向溢出，控制台无 warning/error。
-- 浏览器依次点击国外 AI 速览中的 Meta AI、Claude：目标卡片进入视口且始终只有一张卡片高亮，控制台无 warning/error。
-- 页面滚动到 `scrollY=606` 后点击顶部栏中央空白处可回到 `scrollY=0`；“安全提示”链接仍跳转至 `#tips`，控制台无 warning/error。
-- favicon 声明和头像相对路径已检查；源文件为 678×679 JPEG。
-- README 中的本地路径、站内链接和 `python3 -m http.server 8000` 预览命令已检查；线上地址 `https://dianzihuang2.github.io/` 返回 HTTP 200。
+- 线上与本地 `index.html` SHA-256 均为 `af5c89aac1b5f57ebf8d913b600940ce57bd2a86ce096aff86900957fb8b204a`。
+- `node --check js/data.js`、`node --check js/app.js`、`npx tsc --noEmit`：通过。
+- `npm audit`：0 个漏洞。
+- `npm run build`：通过；Sites 产物约 3.1 MB，未包含大视频。
+- 本地 Wrangler：主页、CSS、两份 JS 和 `og.png` 均返回 HTTP 200。
+- 三个 GitHub Pages 视频地址均返回 HTTP 200、`video/mp4`。
+- Sites 打包脚本成功生成 `/tmp/indexx-sites-live-sync.tar.gz`。
 
 ## 当前问题与限制
 
-- 仓库中没有实体 `AGENTS.md`，本任务按委派消息内的 AGENTS 规则执行。
-- 当前 worktree 未发现 `.gitignore`；本阶段未创建或修改该文件。
-- 部分网站图标文件缺失时会触发现有备用字母标识，这是预期行为。
-- 新版顶部仍是待用户确认的试用稿；当前版本已按用户授权推送。
-- 浏览器自动化安全策略禁止访问 `file://`，未实际验证双击打开；当前使用非模块经典脚本并已通过本地 HTTP 验证。
+- Sites 版本的视频目前依赖现有 GitHub Pages 地址；只有需要完全独立部署时才迁移到 R2。
+- 尚未执行 Sites 部署，也未创建提交或推送本次适配文件。

@@ -1,0 +1,10 @@
+.DS_Store
+/node_modules/
+/.next/
+/.vinext/
+/dist/
+/.wrangler/
+/.env*
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
