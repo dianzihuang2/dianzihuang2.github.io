@@ -2,18 +2,26 @@
 
 ## 当前目标
 
-保持右侧网站速览、Google 搜索和站内搜索，并消除网站图标刷新及分类切换时的备用标识闪烁。
+完成单文件页面的最小拆分，同时保留试用版顶部；下一步等待用户决定是否保留顶部设计及本次代码结构。
 
 ## Git 状态
 
-- Worktree：`/Users/hellokitty/.codex/worktrees/26a8/indexx`
+- Worktree：`/Users/hellokitty/.codex/worktrees/fce7/indexx`
 - 分支：detached HEAD
-- 上一基线：`8cad782`。
-- 当前图标修复与状态文档已提交并推送至 `origin/main`。
+- 当前基线：`8220411`，与 `origin/main` 一致。
+- `index.html`、`styles.css`、`js/data.js`、`js/app.js` 与本次状态文档有未提交修改；用户未跟踪的 `.gitignore` 保持未动。
 
 ## 已完成与变更文件
 
 - `index.html`：加入右侧第三列速览、响应式隐藏、统一顺序渲染、图标备用标识、点击定位和顺序断言；新增独立标签页 Google 搜索及品牌样式；图标默认显示正确图片，仅加载失败时显示备用标识。
+- `index.html`：现有节点横条外增加双列容器，右侧新增 `https://toolknit.com/` 入口及简短描述；手机端单列排列。
+- `index.html`：顶部新增主标题与说明；站内搜索成为唯一主输入框，Google 改为次级提交；猫咪统计压缩，推广区独立横跨顶部并降低按钮权重。
+- `index.html`：现在只保留页面结构、首屏设备识别与 `styles.css`、`js/data.js`、`js/app.js` 的加载声明。
+- `styles.css`：由原内联样式原样迁出，并删除被下一条头像样式覆盖的 Base64 背景。
+- `js/data.js`：集中 `officialLinks`、分类/排名和照片数据；视频名称在此文件修改。
+- `js/app.js`：集中卡片渲染、分类、搜索、下载和弹窗逻辑；头像弹窗直接使用 `assets/avatar.jpeg`。
+- `js/app.js`：`focusHighlightedCard()` 现在在滚动前同步清除旧卡片高亮并高亮目标卡片，右侧速览和搜索共用该行为。
+- `js/app.js`：顶部栏中央纯空白区域点击时平滑回顶；仅匹配 header 自身，品牌与右侧导航不受影响。
 - `PROJECT_STATUS.md`：项目当前状态。
 - `docs/CONTEXT_INDEX.md`：上下文入口。
 - `docs/IMPLEMENTATION_PLAN.md`：本阶段计划与决定。
@@ -25,9 +33,12 @@
 - AI 分类先按现有用途顺序展开，再按 `recommendationRank` 排序；普通分类保留 `officialLinks` 顺序。
 - 1080px 以下隐藏速览，保证移动端和较窄桌面不被挤压。
 - 点击速览复用 `focusHighlightedCard()`，不改搜索高亮变量，也不触发分类切换。
-- Google 搜索通过 `target="_blank"` 提交到 `https://www.google.com/search`，使用标准 `q` 参数和 `rel="noopener"`；原站内搜索表单改用 `#site-search-form` 绑定，避免事件冲突。
-- 内联四色 G SVG 位于输入框最前方，按钮使用 Google 蓝；390px 断点内隐藏按钮的“Google”前缀以防挤压。
+- 站内和 Google 共用 `#site-search-input`；默认提交调用现有 `searchSite()`，带 `data-search-target="google"` 的次级按钮由原生 GET 在新标签页提交。
+- 四色 G 仅用于标记次级 Google 操作；顶部只保留“搜索站内”一个实心蓝色按钮。
 - `createIcon()` 不再等待 `load` 事件添加 `is-loaded`；CSS 默认显示图片并隐藏备用标识，原生 `error` 事件统一切换失败状态，避免所有调用路径重复修补。
+- ToolKnit 入口直接复用 `.promo-banner`，只新增 `.promo-row` 布局；避免新增组件、脚本或依赖。
+- `index.html` 末尾按 `js/data.js`、`js/app.js` 顺序加载经典脚本；不使用框架、模块或构建工具。
+- 启动期设备识别脚本留在 `<head>` 同步执行，避免移动端类名延迟造成首屏错版。
 
 ## 实际验证
 
@@ -38,20 +49,24 @@
 - 11 个分类逐项切换：速览数量、图标数量和顺序均与卡片一致。
 - 搜索 `Chrome`：切换到浏览器分类、搜索高亮与速览同步；随后切换分类会清除高亮和搜索状态并回到卡片顶部。
 - 浏览器控制台没有 warning/error。
-- Google Chrome 1160×577：Google 搜索位于站内搜索上方，两个表单分离且无横向溢出。
-- 实际提交“烤鸭网址”后跳转到 `https://www.google.com.hk/search?q=烤鸭网址`。
-- Google Chrome 390×844：两个搜索框均在视口内；原站内搜索 `Chrome` 仍能定位并高亮浏览器卡片。
-- 新标签页验证：提交“烤鸭网址”后，原标签页保持本地烤鸭站，新增标签页为 `https://www.google.com.hk/search?q=烤鸭网址`。
-- 品牌样式验证：四色 G 为 22×22px，按钮计算颜色为 `rgb(66, 133, 244)`；390×844 下按钮显示“搜索”，全部元素位于表单内且无横向溢出。
 - 图标修复验证：1160×577 下逐项切换 11 个分类，所有非失败图标均为图片可见、备用标识隐藏；国外 AI、国内 AI、其他分类的缺失资源均只显示备用标识；不存在 `is-loaded` 中间态。
 - 响应式复验：1440×900、390×844 下图标错误状态计数均为 0，页面无横向溢出。
+- ToolKnit 横条验收：1440×900 下两个横条等高并排，ToolKnit 位于右侧；1160×700 下文字与按钮无重叠；390×844 下两个横条上下排列。
+- 390×844 下页面 `scrollWidth` 小于视口宽度；ToolKnit 链接、`_blank` 和 `noopener noreferrer` 均正确；控制台无 warning/error。
+- 新版顶部在 1588×429 下让标题、搜索、猫咪与两个推广入口同屏；推广区卡片等高，页面无横向溢出。
+- 新版顶部在 390×844 下标题按语义分为两行，猫咪统计横排，推广入口单列；站内搜索 `Chrome` 可正确定位，控制台无 warning/error。
+- 拆分后 `node --check js/data.js`、`node --check js/app.js` 与 `git diff --check` 通过。
+- 本地 HTTP 浏览器复验：81 个入口、11 个分类；网络工具 6 张卡片、国外 AI 23 张卡片；搜索、照片与头像弹窗正常；390×844 无横向溢出；控制台无 warning/error。
+- 国外 AI 速览连续点击 Meta AI、Claude：目标卡片均进入视口，旧高亮被清除且只有当前卡片保持高亮；控制台无 warning/error。
+- 从 `scrollY=606` 点击顶部栏中央空白区域后回到 `scrollY=0`；右侧“安全提示”仍跳转到 `#tips`，控制台无 warning/error。
 
 ## 已知问题与下一步
 
 - 部分本地图标路径返回 404 后使用现有字母备用标识，行为符合设计。
 - 仓库没有实体 `AGENTS.md`；本任务使用委派消息内规则。
-- 委派所述未跟踪 `.gitignore` 在当前 worktree 不存在，未创建或修改。
-- 下一步：等待用户确定下一项网站功能需求。
+- 当前 worktree 有用户未跟踪的 `.gitignore`，本阶段保持未动。
+- 浏览器安全策略禁止自动访问 `file://`，未实际验证双击打开；经典脚本结构仍保留静态文件兼容性。
+- 下一步：等待用户决定保留、继续调整或回退新版顶部及本次拆分；未经明确要求不提交或推送。
 
 ## 允许范围与禁止事项
 
