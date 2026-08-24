@@ -634,23 +634,15 @@ p {
   width: 70%;
   height: 70%;
   object-fit: contain;
-  opacity: 0;
-}
-
-.app-icon-fallback {
-  display: block;
-}
-
-.app-icon.is-loaded {
-  background: #ffffff;
-}
-
-.app-icon.is-loaded img {
   opacity: 1;
 }
 
-.app-icon.is-loaded .app-icon-fallback {
+.app-icon-fallback {
   display: none;
+}
+
+.app-icon:not(.is-fallback) {
+  background: #ffffff;
 }
 
 .app-icon.is-fallback {
@@ -3073,7 +3065,7 @@ function createIcon(link) {
   const iconUrl = link.iconUrl || (link.url ? faviconFromUrl(link.url) : "");
   return `
     <span class="app-icon${iconUrl ? "" : " is-fallback"}"${link.color ? ` style="--icon-bg: ${link.color}"` : ""} aria-hidden="true">
-      ${iconUrl ? `<img src="${iconUrl}" alt="" onload="this.parentElement.classList.add('is-loaded')" onerror="this.parentElement.classList.add('is-fallback'); this.remove();">` : ""}
+      ${iconUrl ? `<img src="${iconUrl}" alt="" onerror="this.parentElement.classList.add('is-fallback'); this.remove();">` : ""}
       <span class="app-icon-fallback">${link.initials || "▶"}</span>
     </span>
   `;
