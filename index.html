@@ -304,6 +304,31 @@ p {
   transform: scale(0.98);
 }
 
+.google-search .search-control {
+  border-color: #dadce0;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.16);
+}
+
+.google-search .search-control:focus-within {
+  border-color: rgba(66, 133, 244, 0.5);
+  box-shadow: 0 1px 8px rgba(32, 33, 36, 0.24);
+}
+
+.google-search-icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+
+.google-search .search-control button {
+  background: #4285f4;
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3);
+}
+
+.google-search .search-control button:hover {
+  background: #3367d6;
+}
+
 .search-status {
   min-height: 14px;
   margin: 0;
@@ -790,6 +815,70 @@ p {
   color: #ffffff;
 }
 
+.site-overview {
+  display: none;
+}
+
+.site-overview-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 7px 8px;
+}
+
+.site-overview-header strong {
+  font-size: 13px;
+}
+
+.site-overview-header span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.site-overview-list {
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: 3px;
+  overflow-y: auto;
+}
+
+.site-overview-link {
+  min-width: 0;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 7px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #424245;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.site-overview-link:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.site-overview-link .app-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  font-size: 9px;
+}
+
+.site-overview-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .card-grid {
   grid-column: 2;
   display: grid;
@@ -1185,6 +1274,29 @@ code {
   outline-offset: 3px;
 }
 
+@media (min-width: 1080px) {
+  .tool-section {
+    grid-template-columns: 150px minmax(0, 1fr) 184px;
+  }
+
+  .site-overview {
+    position: sticky;
+    top: 70px;
+    z-index: 20;
+    grid-column: 3;
+    grid-row: 1 / span 3;
+    align-self: start;
+    max-height: calc(100vh - 104px);
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    padding: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.74);
+    backdrop-filter: saturate(180%) blur(18px);
+  }
+}
+
 @media (max-width: 960px) {
   :root {
     --page-x: 14px;
@@ -1253,6 +1365,10 @@ code {
 
   .search-control button {
     padding: 0 14px;
+  }
+
+  .google-search-button span {
+    display: none;
   }
 
   .promo-banner {
@@ -1459,7 +1575,19 @@ html.is-mobile .copy-button {
     <main id="top">
       <section class="hero" aria-label="官方网址聚合">
         <div class="hero-copy">
-          <form class="site-search" role="search" aria-label="搜索网址入口">
+          <form class="site-search google-search" action="https://www.google.com/search" method="get" target="_blank" rel="noopener" role="search" aria-label="Google 搜索">
+            <div class="search-control">
+              <svg class="google-search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285f4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.06H12v3.9h5.38a4.6 4.6 0 0 1-2 3.02v2.53h3.24c1.9-1.75 2.98-4.33 2.98-7.39Z"/>
+                <path fill="#34a853" d="M12 22c2.7 0 4.96-.9 6.62-2.38l-3.24-2.53c-.9.6-2.05.96-3.38.96-2.6 0-4.81-1.76-5.6-4.13H3.06v2.6A10 10 0 0 0 12 22Z"/>
+                <path fill="#fbbc05" d="M6.4 13.92A6 6 0 0 1 6.1 12c0-.67.12-1.32.3-1.92v-2.6H3.06A10 10 0 0 0 2 12c0 1.61.38 3.14 1.06 4.52l3.34-2.6Z"/>
+                <path fill="#ea4335" d="M12 5.95c1.47 0 2.79.5 3.82 1.5l2.87-2.87A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.94 5.48l3.34 2.6c.79-2.37 3-4.13 5.6-4.13Z"/>
+              </svg>
+              <input type="search" name="q" aria-label="Google 搜索关键词" placeholder="在 Google 上搜索" autocomplete="off" required>
+              <button class="google-search-button" type="submit"><span>Google </span>搜索</button>
+            </div>
+          </form>
+          <form class="site-search" id="site-search-form" role="search" aria-label="搜索网址入口">
             <div class="search-control">
               <input id="site-search-input" type="search" aria-label="搜索网站" placeholder="搜索网站名或域名，例如 Suno、Chrome、Kimi" autocomplete="off">
               <button type="submit">搜索</button>
@@ -1508,6 +1636,14 @@ html.is-mobile .copy-button {
             <button class="filter-pill" type="button" data-filter="ai-dependency" role="tab" aria-selected="false">AI 依赖</button>
             <button class="filter-pill" type="button" data-filter="other" role="tab" aria-selected="false">其他</button>
           </div>
+
+          <aside class="site-overview" aria-label="当前分类网站速览">
+            <div class="site-overview-header">
+              <strong id="site-overview-title">网络工具</strong>
+              <span id="site-overview-count">0 个</span>
+            </div>
+            <nav class="site-overview-list" id="site-overview-list" aria-label="网站快速定位"></nav>
+          </aside>
 
           <aside class="ranking-methodology" id="ranking-methodology" aria-label="AI 排名说明" hidden>
             <p><strong>能力推荐说明：</strong>同一用途内优先比较当前模型或产品能力；通用助手以 Artificial Analysis 独立基准和 Arena 用户盲测为主，再考虑消费端实际开放模型、功能完整度和访问限制。流量榜仅作为普及度参考，不参与能力主排序，数据核验于 2026-08-23。</p>
@@ -2840,11 +2976,14 @@ const filterButtons = document.querySelectorAll(".filter-pill");
 const emptyState = document.querySelector("#empty-state");
 const rankingMethodology = document.querySelector("#ranking-methodology");
 const toast = document.querySelector("#toast");
-const searchForm = document.querySelector(".site-search");
+const searchForm = document.querySelector("#site-search-form");
 const searchInput = document.querySelector("#site-search-input");
 const searchStatus = document.querySelector("#search-status");
 const avatarMark = document.querySelector(".brand-mark");
 const heroPhoto = document.querySelector(".hero-photo");
+const siteOverviewTitle = document.querySelector("#site-overview-title");
+const siteOverviewCount = document.querySelector("#site-overview-count");
+const siteOverviewList = document.querySelector("#site-overview-list");
 
 let activeFilter = "network";
 let activeHighlightName = "";
@@ -2931,11 +3070,11 @@ function createActions(link) {
 }
 
 function createIcon(link) {
-  const iconUrl = link.iconUrl || faviconFromUrl(link.url);
+  const iconUrl = link.iconUrl || (link.url ? faviconFromUrl(link.url) : "");
   return `
-    <span class="app-icon" style="--icon-bg: ${link.color}" aria-hidden="true">
-      <img src="${iconUrl}" alt="" onload="this.parentElement.classList.add('is-loaded')" onerror="this.parentElement.classList.add('is-fallback'); this.remove();">
-      <span class="app-icon-fallback">${link.initials}</span>
+    <span class="app-icon${iconUrl ? "" : " is-fallback"}"${link.color ? ` style="--icon-bg: ${link.color}"` : ""} aria-hidden="true">
+      ${iconUrl ? `<img src="${iconUrl}" alt="" onload="this.parentElement.classList.add('is-loaded')" onerror="this.parentElement.classList.add('is-fallback'); this.remove();">` : ""}
+      <span class="app-icon-fallback">${link.initials || "▶"}</span>
     </span>
   `;
 }
@@ -3057,15 +3196,18 @@ function renderCards() {
   });
 
   const isAiFilter = aiCategories.has(activeFilter);
+  const orderedLinks = isAiFilter
+    ? aiGroupOrder[activeFilter].flatMap((useCase) => filtered
+      .filter((link) => link.useCase === useCase)
+      .sort((a, b) => a.recommendationRank - b.recommendationRank))
+    : filtered;
   cardGrid.classList.toggle("is-grouped", isAiFilter);
   rankingMethodology.hidden = !isAiFilter;
 
   if (isAiFilter) {
     cardGrid.innerHTML = aiGroupOrder[activeFilter]
       .map((useCase) => {
-        const links = filtered
-          .filter((link) => link.useCase === useCase)
-          .sort((a, b) => a.recommendationRank - b.recommendationRank);
+        const links = orderedLinks.filter((link) => link.useCase === useCase);
         if (!links.length) return "";
 
         return `
@@ -3080,10 +3222,21 @@ function renderCards() {
       })
       .join("");
   } else {
-    cardGrid.innerHTML = filtered.map((link) => createCard(link)).join("");
+    cardGrid.innerHTML = orderedLinks.map((link) => createCard(link)).join("");
   }
 
   emptyState.hidden = filtered.length > 0;
+  siteOverviewTitle.textContent = categoryNames[activeFilter];
+  siteOverviewCount.textContent = `${orderedLinks.length} 个`;
+  siteOverviewList.innerHTML = orderedLinks.map((link) => `
+    <button class="site-overview-link" type="button" data-overview-link="${encodeURIComponent(link.name)}" title="定位到 ${link.name}">
+      ${createIcon(link)}
+      <span class="site-overview-name">${link.name}</span>
+    </button>
+  `).join("");
+  const cardOrder = [...cardGrid.querySelectorAll("[data-link-key]")].map((card) => card.dataset.linkKey).join("\n");
+  const overviewOrder = [...siteOverviewList.children].map((item) => item.dataset.overviewLink).join("\n");
+  if (cardOrder !== overviewOrder) throw new Error("网站速览顺序与卡片不一致");
 }
 
 function focusHighlightedCard(linkName) {
@@ -3180,6 +3333,7 @@ function openDownloadDialog(link) {
 document.addEventListener("click", (event) => {
   const copyButton = event.target.closest("[data-copy]");
   const downloadButton = event.target.closest("[data-download]");
+  const overviewButton = event.target.closest("[data-overview-link]");
   if (copyButton) {
     copyToClipboard(copyButton.dataset.copy);
   }
@@ -3187,6 +3341,9 @@ document.addEventListener("click", (event) => {
     const linkName = decodeURIComponent(downloadButton.dataset.download);
     const link = officialLinks.find((item) => item.name === linkName);
     if (link?.downloadInfo) openDownloadDialog(link);
+  }
+  if (overviewButton) {
+    focusHighlightedCard(decodeURIComponent(overviewButton.dataset.overviewLink));
   }
 });
 
