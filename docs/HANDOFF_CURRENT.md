@@ -8,7 +8,7 @@
 
 - Worktree：`/Users/hellokitty/.codex/worktrees/fce7/indexx`
 - 分支：detached HEAD
-- 功能提交：`51630be`，已推送至 `origin/main`。
+- 当前网站版本已推送至 `origin/main`；恢复时以实际 HEAD 和远端分支为准。
 - 当前网站与项目状态均已提交；用户未跟踪的 `.gitignore` 保持未动。
 
 ## 已完成与变更文件
@@ -22,6 +22,7 @@
 - `js/app.js`：集中卡片渲染、分类、搜索、下载和弹窗逻辑；头像弹窗直接使用 `assets/avatar.jpeg`。
 - `js/app.js`：`focusHighlightedCard()` 现在在滚动前同步清除旧卡片高亮并高亮目标卡片，右侧速览和搜索共用该行为。
 - `js/app.js`：顶部栏中央纯空白区域点击时平滑回顶；仅匹配 header 自身，品牌与右侧导航不受影响。
+- `index.html`：在 `<head>` 声明 `assets/avatar.jpeg` 为浏览器 favicon 和 Apple 主屏图标。
 - `PROJECT_STATUS.md`：项目当前状态。
 - `docs/CONTEXT_INDEX.md`：上下文入口。
 - `docs/IMPLEMENTATION_PLAN.md`：本阶段计划与决定。
@@ -59,6 +60,7 @@
 - 本地 HTTP 浏览器复验：81 个入口、11 个分类；网络工具 6 张卡片、国外 AI 23 张卡片；搜索、照片与头像弹窗正常；390×844 无横向溢出；控制台无 warning/error。
 - 国外 AI 速览连续点击 Meta AI、Claude：目标卡片均进入视口，旧高亮被清除且只有当前卡片保持高亮；控制台无 warning/error。
 - 从 `scrollY=606` 点击顶部栏中央空白区域后回到 `scrollY=0`；右侧“安全提示”仍跳转到 `#tips`，控制台无 warning/error。
+- favicon 与 Apple 图标声明存在，头像文件为 678×679 JPEG，相对路径有效。
 
 ## 已知问题与下一步
 
