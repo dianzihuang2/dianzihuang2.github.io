@@ -2,8 +2,8 @@
 
 - 项目：烤鸭网址 / 烤鸭笔记
 - 当前目标：以线上 GitHub Pages 版本统一本地源码，同时保留可发布到 Sites 的适配层。
-- 当前阶段：网页源码已同步至 `origin/main` 的 `8b604eb`；Sites 构建与本地 Worker 验证通过，尚未部署。
-- Git：`main` 与 `origin/main` 指向同一提交；Sites 适配文件仍为未提交文件。
+- 当前阶段：网页源码已同步至线上版本；Sites 生产部署已成功，当前为仅所有者可访问。
+- Git：`main` 包含 Sites 适配提交，尚未推送至 GitHub 的 `origin/main`。
 
 ## 已完成
 
@@ -21,8 +21,9 @@
 - 本地 Wrangler：主页、CSS、两份 JS 和 `og.png` 均返回 HTTP 200。
 - 三个 GitHub Pages 视频地址均返回 HTTP 200、`video/mp4`。
 - Sites 打包脚本成功生成 `/tmp/indexx-sites-live-sync.tar.gz`。
+- Sites 版本 1 已成功部署：`https://kaoya-notes.wei1399464323.chatgpt.site`。
 
 ## 当前问题与限制
 
 - Sites 版本的视频目前依赖现有 GitHub Pages 地址；只有需要完全独立部署时才迁移到 R2。
-- 尚未执行 Sites 部署，也未创建提交或推送本次适配文件。
+- Sites 当前为仅所有者可访问；改为公开或共享访问前需要用户明确确认。

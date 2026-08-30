@@ -2,14 +2,15 @@
 
 ## 当前目标
 
-使用当前线上 `https://dianzihuang2.github.io/` 的版本统一本地，并保留 Sites 发布能力。
+使用当前线上 `https://dianzihuang2.github.io/` 的版本统一本地，并部署到 Sites；目标已完成。
 
 ## Git 状态
 
 - Worktree：`/Users/hellokitty/codexwork/opentool/indexx`
 - 分支：`main`
-- HEAD / `origin/main`：`8b604eb37332dde64e50d57f188624da2e23ab83`
-- 网页源码与线上版本一致；Sites 适配和本状态更新尚未提交。
+- HEAD：`21d66819451dd4f606422405116f05b9830ce0cc`
+- `origin/main`：`8b604eb37332dde64e50d57f188624da2e23ab83`
+- 网页源码与线上版本一致；Sites 适配已提交到本地，未推送至 GitHub。
 
 ## 已完成与变更文件
 
@@ -32,11 +33,12 @@
 - 本地 Wrangler 对 `/`、`/styles.css`、`/js/data.js`、`/js/app.js`、`/og.png` 均返回 HTTP 200。
 - 三个远端视频均返回 HTTP 200 和 `video/mp4`。
 - Sites 打包脚本通过；构建产物约 3.1 MB，未包含视频目录。
+- Sites 版本 1 生产部署成功：`https://kaoya-notes.wei1399464323.chatgpt.site`，访问范围为仅所有者。
 
 ## 已知问题与下一步
 
 - 当前 Sites 视频依赖 GitHub Pages；需要独立托管时迁移到 R2。
-- 下一步仅在用户明确要求后执行 Sites 部署或 Git 提交/推送。
+- 下一步仅在用户明确要求后调整 Sites 访问范围或推送 GitHub。
 
 ## 允许范围与禁止事项
 
