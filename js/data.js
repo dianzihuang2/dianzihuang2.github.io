@@ -1223,6 +1223,16 @@ const officialLinks = [
     color: "linear-gradient(135deg, #7c2d12, #f59e0b)",
   },
   {
+    name: "123网盘",
+    description: "123云盘官方入口，提供云存储、文件管理、在线播放和多端访问。",
+    aliases: ["123云盘", "123盘", "123pan"],
+    url: "https://www.123pan.com/",
+    category: "cloud-drive",
+    categoryLabel: "国内网盘",
+    initials: "12",
+    color: "linear-gradient(135deg, #1e40af, #3b82f6)",
+  },
+  {
     name: "Microsoft 365 / Office",
     description: "Microsoft 365 官方入口，可访问 Word、Excel、PowerPoint、Outlook 等办公应用。",
     url: "https://www.office.com/",
