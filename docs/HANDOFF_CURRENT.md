@@ -8,7 +8,7 @@
 
 - Worktree：`/Users/hellokitty/codexwork/opentool/indexx`
 - 分支：`main`
-- 本次下载入口与既有 Sites 适配已提交并推送至 GitHub。
+- 本次 Chrome 下载入口已提交并推送至 GitHub；Sites 使用独立轻量源码分支发布。
 
 ## 已完成与变更文件
 
@@ -36,7 +36,7 @@
 - 本地 Wrangler 对 `/`、`/styles.css`、`/js/data.js`、`/js/app.js`、`/og.png` 均返回 HTTP 200。
 - 三个远端视频均返回 HTTP 200 和 `video/mp4`。
 - Sites 打包脚本通过；构建产物约 3.1 MB，未包含视频目录。
-- Sites 版本 1 生产部署成功：`https://kaoya-notes.wei1399464323.chatgpt.site`，访问范围为仅所有者。
+- Sites 版本 2 公开部署成功：`https://kaoya.wei1399464323.chatgpt.site`，并确认线上数据包含 Chrome 下载地址。
 - 7 个已接入的 CNB 文件均通过 Range GET 返回 HTTP 206；Chrome 数据语法、下载结构、SHA-256、生产构建和 `git diff --check` 通过。
 
 ## 已知问题与下一步
