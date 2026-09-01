@@ -28,6 +28,8 @@
 20. 已完成：抓取当前 GitHub Pages 页面并核对远端提交，以 `origin/main` 的 `8b604eb` 统一本地网页源码。
 21. 已完成：保留独立 Sites 适配层，不修改线上版本的 HTML、CSS、数据和交互源码。
 22. 已完成：完成类型检查、安全审计、生产构建、Wrangler 路由和 Sites 打包验证。
+23. 已完成：核实可再分发安装包并将 OpenCode、Python、Node.js、Git 上传至 CNB，记录版本、平台、大小和 SHA-256。
+24. 已完成：复用现有 `downloadInfo` 接入 4 个网站并完成语法、结构、链接和 diff 校验；LibreOffice 因附件大小限制暂缓。
 
 ## 文件范围
 
@@ -54,3 +56,5 @@
 - 速览与搜索继续共用 `focusHighlightedCard()`；定位函数统一更新 `activeHighlightName` 和卡片类名，避免两套高亮逻辑。
 - 回顶监听只在点击目标恰好是 `.site-header` 时触发，子元素链接继续使用原事件，不增加覆盖层。
 - Sites 适配不改动线上网页源码；响应时注入分享元数据，并复用 GitHub Pages 原视频以避开静态资源单文件限制。
+- 软件镜像只复用现有 `downloadInfo`；二进制保持上游原样，外层 ZIP 附许可证，不增加下载服务或自动更新逻辑。
+- CNB 网页附件超过约 64 MiB 时不采用分卷绕过，改为等待合适的大文件存储方式。

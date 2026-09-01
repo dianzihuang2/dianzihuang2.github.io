@@ -987,6 +987,32 @@ const officialLinks = [
     aliases: ["Open Code"],
     initials: "OC",
     color: "linear-gradient(135deg, #111827, #64748b)",
+    downloadInfo: {
+      version: "1.18.25",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/opencode-1.18.25",
+      upstreamUrl: "https://github.com/anomalyco/opencode/releases/tag/v1.18.25",
+      note: "官方 CLI 二进制，ZIP 内附 MIT 许可证。Windows x64 适合常见 Intel / AMD 电脑；macOS ARM64 适合 Apple 芯片 Mac。",
+      files: [
+        {
+          label: "Windows x64",
+          platform: "Windows",
+          architecture: "x64（Intel / AMD）",
+          format: "ZIP（内含 EXE 与许可证）",
+          size: "57.36 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/5592ac0a-9aa9-4dc3-9e91-4b582b360468/OpenCode-1.18.25-windows-x64.zip",
+          checksum: "d743c6b296557638c428257cef0b244481571f83d1c456723135c064c979bf0d",
+        },
+        {
+          label: "macOS Apple 芯片",
+          platform: "macOS",
+          architecture: "ARM64（Apple M 系列）",
+          format: "ZIP（内含可执行文件与许可证）",
+          size: "43.93 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/7ade9fed-91cf-43ab-a8f9-5b941f19e86c/OpenCode-1.18.25-macos-arm64.zip",
+          checksum: "ff4fdb41dfc214bd4ea7c8c59a1ebecdc0cfa95d380f4e85428445ced9888299",
+        },
+      ],
+    },
   },
   {
     name: "Replit",
@@ -1065,6 +1091,23 @@ const officialLinks = [
     categoryLabel: "开发工具",
     initials: "Py",
     color: "linear-gradient(135deg, #306998, #ffd43b)",
+    downloadInfo: {
+      version: "3.14.7",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/python-3.14.7",
+      upstreamUrl: "https://www.python.org/downloads/release/python-3147/",
+      note: "下载 ZIP 后解压并运行官方 Windows 安装程序；ZIP 内附 PSF 许可证。",
+      files: [
+        {
+          label: "Windows x64",
+          platform: "Windows",
+          architecture: "x64（Intel / AMD）",
+          format: "ZIP（内含 EXE 与许可证）",
+          size: "31.73 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/1074aeb6-fb15-43cf-8314-dfdbd25f8d6b/Python-3.14.7-windows-x64.zip",
+          checksum: "8919c882619e27bd45d2ea1a8f9252adc444c3eec40ec7633d26df48638bda86",
+        },
+      ],
+    },
   },
   {
     name: "Node.js",
@@ -1074,6 +1117,32 @@ const officialLinks = [
     categoryLabel: "开发工具",
     initials: "JS",
     color: "linear-gradient(135deg, #3c873a, #68a063)",
+    downloadInfo: {
+      version: "24.20.0 LTS",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/nodejs-24.20.0",
+      upstreamUrl: "https://nodejs.org/dist/v24.20.0/",
+      note: "官方 Node.js 24 LTS 安装包，ZIP 内附 MIT 许可证。Windows 包含 MSI；macOS 包含 ARM64 TAR.GZ。",
+      files: [
+        {
+          label: "Windows x64",
+          platform: "Windows",
+          architecture: "x64（Intel / AMD）",
+          format: "ZIP（内含 MSI 与许可证）",
+          size: "31.79 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/0a39110a-bf43-4abd-a0d2-04469925a8ee/Node.js-24.20.0-windows-x64.zip",
+          checksum: "63416865e24cdcb0b7d70539ffe504ffdae83bafd97572111bc3db4165873f34",
+        },
+        {
+          label: "macOS Apple 芯片",
+          platform: "macOS",
+          architecture: "ARM64（Apple M 系列）",
+          format: "ZIP（内含 TAR.GZ 与许可证）",
+          size: "50.52 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/b91fc0d0-a483-4cdf-a46c-5dc05938677b/Node.js-24.20.0-macos-arm64.zip",
+          checksum: "54a31ce7ce805a54958ec9f18ac28c58e3be49b64885268297207df0487853a7",
+        },
+      ],
+    },
   },
   {
     name: "Docker",
@@ -1101,6 +1170,23 @@ const officialLinks = [
     categoryLabel: "AI 依赖",
     initials: "Git",
     color: "linear-gradient(135deg, #f05032, #111827)",
+    downloadInfo: {
+      version: "2.55.0.5",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/git-2.55.0.5",
+      upstreamUrl: "https://github.com/git-for-windows/git/releases/tag/v2.55.0.windows.5",
+      note: "Git for Windows 官方安装程序，下载 ZIP 后解压；ZIP 内附 GPLv2 许可证。",
+      files: [
+        {
+          label: "Windows x64",
+          platform: "Windows",
+          architecture: "x64（Intel / AMD）",
+          format: "ZIP（内含 EXE 与许可证）",
+          size: "62.33 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/f9c985ee-83e3-4f67-99c1-14e0a14e07f6/Git-2.55.0.5-windows-x64.zip",
+          checksum: "572911ffaa845bfa6e836d2017f8951cdb503ed8a40ca5eb7f7d820797090ff9",
+        },
+      ],
+    },
   },
   {
     name: "WSL2",

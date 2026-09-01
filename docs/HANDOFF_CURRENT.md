@@ -2,15 +2,13 @@
 
 ## 当前目标
 
-使用当前线上 `https://dianzihuang2.github.io/` 的版本统一本地，并部署到 Sites；目标已完成。
+为允许公开再分发的软件补充自托管安装包；OpenCode、Python、Node.js、Git 已完成，LibreOffice 因 CNB 网页附件大小限制暂缓。
 
 ## Git 状态
 
 - Worktree：`/Users/hellokitty/codexwork/opentool/indexx`
 - 分支：`main`
-- HEAD：`21d66819451dd4f606422405116f05b9830ce0cc`
-- `origin/main`：`8b604eb37332dde64e50d57f188624da2e23ab83`
-- 网页源码与线上版本一致；Sites 适配已提交到本地，未推送至 GitHub。
+- 本次下载入口与既有 Sites 适配已提交并推送至 GitHub。
 
 ## 已完成与变更文件
 
@@ -19,12 +17,16 @@
 - `public/`：仅映射 Sites 需要打包的样式、脚本、图片、图标和 `og.png`，不复制大视频。
 - `.openai/hosting.json`、`vite.config.ts`、`package.json` 等：Sites/Vinext 构建配置。
 - `.gitignore`：忽略依赖、构建产物和本地环境文件。
+- `js/data.js`：为 OpenCode 1.18.25、Python 3.14.7、Node.js 24.20.0 LTS、Git for Windows 2.55.0.5 增加 `downloadInfo`。
+- CNB `kaoyawei/downloads`：新增 4 个 Release、5 个 Tag 和 6 个带许可证的 ZIP；额外创建的 LibreOffice Tag 尚无 Release。
 
 ## 关键决定及理由
 
 - 线上页面与 `origin/main` 的 `index.html` 哈希完全一致，因此直接使用远端提交，不重做页面。
 - 三个原视频均超过 Sites 静态资源单文件限制；为保持当前版本和画质，Sites 运行时复用已有 GitHub Pages 视频，暂不引入 R2。
 - Sites 元数据在 Worker 响应中注入，不修改原始 `index.html`，便于持续核对线上版本。
+- 只镜像明确允许再分发的开源软件；安装程序保持原样，外层 ZIP 附带许可证并在页面展示 SHA-256。
+- CNB 网页上传约 64 MiB 以上不稳定，不使用分卷包；因此 Python 仅提供 Windows x64，LibreOffice 暂不接入。
 
 ## 实际验证
 
@@ -34,11 +36,13 @@
 - 三个远端视频均返回 HTTP 200 和 `video/mp4`。
 - Sites 打包脚本通过；构建产物约 3.1 MB，未包含视频目录。
 - Sites 版本 1 生产部署成功：`https://kaoya-notes.wei1399464323.chatgpt.site`，访问范围为仅所有者。
+- 6 个新增 CNB 文件均通过 Range GET 返回 HTTP 206；数据语法、下载结构和 `git diff --check` 通过。
 
 ## 已知问题与下一步
 
 - 当前 Sites 视频依赖 GitHub Pages；需要独立托管时迁移到 R2。
-- 下一步仅在用户明确要求后调整 Sites 访问范围或推送 GitHub。
+- Python macOS 包约 75 MiB，LibreOffice 包约 285–358 MiB，超过当前 CNB 网页附件可用范围；需要支持大文件的存储方式后再补。
+- 下一步仅在用户明确要求后调整 Sites 访问范围。
 
 ## 允许范围与禁止事项
 
