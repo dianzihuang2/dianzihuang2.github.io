@@ -29,6 +29,23 @@ const officialLinks = [
     initials: "Ch",
     color: "linear-gradient(135deg, #1a73e8, #34a853 48%, #fbbc04)",
     pinned: true,
+    downloadInfo: {
+      version: "Windows 安装器",
+      releaseUrl: "https://cnb.cool/kaoyawei/downloads/-/releases/tag/%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8",
+      upstreamUrl: "https://www.google.cn/chrome/",
+      note: "CNB 中保存的 Chrome Windows 安装程序；下载 ZIP 后解压并运行 ChromeSetup.exe。",
+      files: [
+        {
+          label: "Windows 安装器",
+          platform: "Windows",
+          architecture: "由安装程序自动匹配",
+          format: "ZIP（内含 EXE）",
+          size: "5.07 MiB",
+          url: "https://cnb.cool/kaoyawei/downloads/-/files/TY6g7miU68tmAChpUZvrfF/2437d214-fc5f-4f09-9f15-1ede2d23b328/ChromeSetup.zip",
+          checksum: "de60f32c9d1f561d7fa48693b7db81d7402147ab1ee781e42169cfe08902203d",
+        },
+      ],
+    },
   },
   {
     name: "UU 远程",

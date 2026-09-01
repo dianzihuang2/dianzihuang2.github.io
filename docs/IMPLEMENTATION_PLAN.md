@@ -30,6 +30,7 @@
 22. 已完成：完成类型检查、安全审计、生产构建、Wrangler 路由和 Sites 打包验证。
 23. 已完成：核实可再分发安装包并将 OpenCode、Python、Node.js、Git 上传至 CNB，记录版本、平台、大小和 SHA-256。
 24. 已完成：复用现有 `downloadInfo` 接入 4 个网站并完成语法、结构、链接和 diff 校验；LibreOffice 因附件大小限制暂缓。
+25. 已完成：将 CNB 现有 `chorme` Release 的 Windows 安装包接入 Chrome 卡片，并验证附件、校验值和生产构建。
 
 ## 文件范围
 

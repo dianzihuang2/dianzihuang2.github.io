@@ -2,7 +2,7 @@
 
 - 项目：烤鸭网址 / 烤鸭笔记
 - 当前目标：为允许公开再分发的软件补充自托管安装包和下载入口。
-- 当前阶段：OpenCode、Python、Node.js、Git 已上传 CNB 并接入下载弹窗；LibreOffice 受网页附件大小限制暂缓。
+- 当前阶段：Chrome、OpenCode、Python、Node.js、Git 已上传 CNB 并接入下载弹窗；LibreOffice 受网页附件大小限制暂缓。
 - Git：本次下载入口与既有 Sites 适配将随 `main` 推送至 GitHub。
 
 ## 已完成
@@ -13,6 +13,7 @@
 - Sites 构建不复制三个超过单文件限制的视频，运行时复用 GitHub Pages 上的原视频地址，页面内容和视频质量不变。
 - CNB 新增 OpenCode 1.18.25、Python 3.14.7、Node.js 24.20.0 LTS、Git for Windows 2.55.0.5 Release，共 6 个可下载 ZIP。
 - `js/data.js` 已为上述 4 个网站补充版本、平台、大小、SHA-256、上游和 CNB 下载地址。
+- Chrome 已接入现有 CNB `chorme` Release 的 Windows 安装包，并展示附件 SHA-256。
 
 ## 最近验证
 
@@ -24,8 +25,8 @@
 - 三个 GitHub Pages 视频地址均返回 HTTP 200、`video/mp4`。
 - Sites 打包脚本成功生成 `/tmp/indexx-sites-live-sync.tar.gz`。
 - Sites 版本 1 已成功部署：`https://kaoya-notes.wei1399464323.chatgpt.site`。
-- 6 个新增 CNB 文件均通过 Range GET 返回 HTTP 206；本地 SHA-256 与页面配置一致。
-- 新增下载数据通过 `node --check js/data.js`、`node --check js/app.js`、结构校验和 `git diff --check`。
+- 7 个已接入的 CNB 文件均通过 Range GET 返回 HTTP 206；Chrome 附件 SHA-256 与页面配置一致。
+- 新增下载数据通过 `node --check js/data.js`、`node --check js/app.js`、结构校验、`npm run build` 和 `git diff --check`。
 
 ## 当前问题与限制
 

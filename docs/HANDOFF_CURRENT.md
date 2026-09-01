@@ -2,7 +2,7 @@
 
 ## 当前目标
 
-为允许公开再分发的软件补充自托管安装包；OpenCode、Python、Node.js、Git 已完成，LibreOffice 因 CNB 网页附件大小限制暂缓。
+为网站补充自托管安装包；Chrome、OpenCode、Python、Node.js、Git 已完成，LibreOffice 因 CNB 网页附件大小限制暂缓。
 
 ## Git 状态
 
@@ -18,6 +18,7 @@
 - `.openai/hosting.json`、`vite.config.ts`、`package.json` 等：Sites/Vinext 构建配置。
 - `.gitignore`：忽略依赖、构建产物和本地环境文件。
 - `js/data.js`：为 OpenCode 1.18.25、Python 3.14.7、Node.js 24.20.0 LTS、Git for Windows 2.55.0.5 增加 `downloadInfo`。
+- `js/data.js`：Chrome 复用 CNB 现有 `chorme` Release，增加 Windows 安装包下载入口。
 - CNB `kaoyawei/downloads`：新增 4 个 Release、5 个 Tag 和 6 个带许可证的 ZIP；额外创建的 LibreOffice Tag 尚无 Release。
 
 ## 关键决定及理由
@@ -36,7 +37,7 @@
 - 三个远端视频均返回 HTTP 200 和 `video/mp4`。
 - Sites 打包脚本通过；构建产物约 3.1 MB，未包含视频目录。
 - Sites 版本 1 生产部署成功：`https://kaoya-notes.wei1399464323.chatgpt.site`，访问范围为仅所有者。
-- 6 个新增 CNB 文件均通过 Range GET 返回 HTTP 206；数据语法、下载结构和 `git diff --check` 通过。
+- 7 个已接入的 CNB 文件均通过 Range GET 返回 HTTP 206；Chrome 数据语法、下载结构、SHA-256、生产构建和 `git diff --check` 通过。
 
 ## 已知问题与下一步
 
