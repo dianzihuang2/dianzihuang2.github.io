@@ -657,6 +657,8 @@ p {
 }
 
 .app-icon img {
+  /* 图标容器固定白底，SVG 内的配色也应使用亮色方案。 */
+  color-scheme: light;
   width: 70%;
   height: 70%;
   object-fit: contain;

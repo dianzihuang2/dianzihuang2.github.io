@@ -34,7 +34,7 @@ const officialLinks = [
           "Copilot cloud agent"
       ],
       "initials": "GH",
-      "iconUrl": "assets/icons/github.com.png",
+      "iconUrl": "assets/icons/copilot.svg",
       "category": "global-ai",
       "categoryLabel": "国外 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -59,7 +59,7 @@ const officialLinks = [
           "谷歌反重力"
       ],
       "initials": "AG",
-      "iconUrl": "assets/icons/gemini.google.com.png",
+      "iconUrl": "assets/icons/antigravity.png",
       "category": "global-ai",
       "categoryLabel": "国外 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -83,7 +83,7 @@ const officialLinks = [
           "Codeium"
       ],
       "initials": "Dv",
-      "iconUrl": "",
+      "iconUrl": "assets/icons/devin-desktop.png",
       "category": "global-ai",
       "categoryLabel": "国外 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -106,7 +106,7 @@ const officialLinks = [
           "Kiro CLI"
       ],
       "initials": "Ki",
-      "iconUrl": "",
+      "iconUrl": "assets/icons/kiro.png",
       "category": "global-ai",
       "categoryLabel": "国外 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -128,7 +128,7 @@ const officialLinks = [
           "Cline CLI"
       ],
       "initials": "Cl",
-      "iconUrl": "",
+      "iconUrl": "assets/icons/cline.png",
       "category": "global-ai",
       "categoryLabel": "国外 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -152,7 +152,7 @@ const officialLinks = [
           "Qwen CLI"
       ],
       "initials": "Qw",
-      "iconUrl": "",
+      "iconUrl": "assets/icons/qwen-code.png",
       "category": "china-ai",
       "categoryLabel": "国内 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -175,7 +175,7 @@ const officialLinks = [
           "Agent Canvas"
       ],
       "initials": "OH",
-      "iconUrl": "",
+      "iconUrl": "assets/icons/openhands.svg",
       "category": "global-ai",
       "categoryLabel": "国外 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -199,7 +199,7 @@ const officialLinks = [
           "彗星浏览器"
       ],
       "initials": "Co",
-      "iconUrl": "assets/icons/perplexity.ai.png",
+      "iconUrl": "assets/icons/comet.jpg",
       "category": "global-ai",
       "categoryLabel": "国外 AI",
       "rankingNote": "按官方产品定位与上述使用场景收录，不代表模型能力排名。",
@@ -247,6 +247,7 @@ const officialLinks = [
   },
   {
     name: "Clash Verge Rev",
+    iconUrl: "assets/icons/clash-verge-rev.png",
     description: "Clash Verge 延续版本，提供跨平台代理客户端与文档入口。",
     url: "https://github.com/clash-verge-rev/clash-verge-rev",
     category: "network",
@@ -494,7 +495,7 @@ const officialLinks = [
     strength: "与百度搜索和中文内容生态结合紧密，适合中文检索、问答和内容生成。",
     weakness: "产品命名和入口变更较多，复杂推理和代码场景通常不是首选。",
     url: "https://wenxin.baidu.com/",
-    iconUrl: "assets/icons/yiyan.baidu.com.png",
+    iconUrl: "assets/icons/wenxin.png",
     category: "china-ai",
     categoryLabel: "国内 AI",
     useCase: "通用助手",
@@ -648,6 +649,7 @@ const officialLinks = [
   },
   {
     name: "Trae",
+    iconUrl: "assets/icons/trae.png",
     description: "TRAE 的 AI 编程入口，当前提供 TraeCode，并另有 TraeWork 办公产品。",
     strength: "兼顾传统编辑器操作和 Agent 式开发，适合中文用户进行项目级编码。",
     weakness: "复杂工程改动仍需人工审查和测试，部分高级能力受版本与账号限制。",
@@ -666,6 +668,7 @@ const officialLinks = [
   },
   {
     name: "Reasonix",
+    iconUrl: "assets/icons/reasonix.svg",
     description: "面向 DeepSeek 模型优化的终端编程 Agent。",
     strength: "可在终端中理解代码库、规划任务并执行多文件修改，DeepSeek 接入路径清晰。",
     weakness: "属于第三方工具且偏命令行工作流，使用前仍需核对权限、改动和测试结果。",
@@ -684,6 +687,7 @@ const officialLinks = [
   },
   {
     name: "DeepSeek Harness",
+    iconUrl: "assets/icons/deepseek-harness.svg",
     parentProduct: "DeepSeek",
     description: "DeepSeek 开源的本地优先 Coding Agent 与 Agent 开发运行环境。",
     strength: "通过插件组合工具、提示词和上下文，可切换模型并扩展自己的 Agent 工作流。",
@@ -1150,6 +1154,7 @@ const officialLinks = [
   },
   {
     name: "Codex",
+    iconUrl: "assets/icons/codex.png",
     parentProduct: "ChatGPT",
     description: "OpenAI 推出的 Coding Agent，可在应用、IDE、终端和云端协作编程。",
     strength: "能读取代码库、修改文件、运行命令并处理较完整的软件开发任务。",
@@ -1169,6 +1174,7 @@ const officialLinks = [
   },
   {
     name: "Claude Code",
+    iconUrl: "assets/icons/claude-code.png",
     parentProduct: "Claude",
     description: "Anthropic 推出的 Coding Agent，可在终端、IDE、桌面和 Web 中使用。",
     strength: "擅长理解代码库、执行多步骤修改和配合现有开发工具链。",
@@ -1188,6 +1194,7 @@ const officialLinks = [
   },
   {
     name: "OpenCode",
+    iconUrl: "assets/icons/opencode.png",
     description: "开源 Coding Agent，支持终端、IDE 和桌面端，并可连接多种模型。",
     strength: "模型与提供商选择灵活，适合希望使用开放工具链的开发者。",
     weakness: "不同模型和配置的体验差异较大，需要自行管理密钥、权限和运行环境。",
@@ -1406,6 +1413,7 @@ const officialLinks = [
   },
   {
     name: "WSL2",
+    iconUrl: "assets/icons/wsl.png",
     description: "Windows 上运行 Linux 开发环境，适合 Codex、Claude Code 和常见命令行开发工具。",
     url: "https://learn.microsoft.com/windows/wsl/install",
     category: "ai-dependency",
@@ -1424,6 +1432,7 @@ const officialLinks = [
   },
   {
     name: "ripgrep / rg",
+    iconUrl: "",
     description: "高速代码搜索工具，常被 AI 编程 Agent 用于快速检索项目文件和定位上下文。",
     url: "https://github.com/BurntSushi/ripgrep/releases",
     category: "ai-dependency",
@@ -1545,6 +1554,7 @@ const officialLinks = [
   },
   {
     name: "Excel",
+    iconUrl: "assets/icons/excel.svg",
     description: "Microsoft Excel 官方入口，用于电子表格、数据分析和在线协作。",
     url: "https://www.microsoft.com/en-us/microsoft-365/excel",
     category: "office",
