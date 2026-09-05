@@ -36,7 +36,7 @@
   window.addEventListener("orientationchange", applyDeviceClass, { passive: true });
 })();
     </script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260905-brand">
   </head>
   <body>
     <header class="site-header">
@@ -136,15 +136,16 @@
             <nav class="site-overview-list" id="site-overview-list" aria-label="网站快速定位"></nav>
           </aside>
 
-          <aside class="ranking-methodology" id="ranking-methodology" aria-label="AI 排名说明" hidden>
-            <p><strong>能力推荐说明：</strong>同一用途内优先比较当前模型或产品能力；通用助手以 Artificial Analysis 独立基准和 Arena 用户盲测为主，再考虑消费端实际开放模型、功能完整度和访问限制。流量榜仅作为普及度参考，不参与能力主排序，数据核验于 2026-08-23。</p>
-            <div class="ranking-source-links" aria-label="主要排名来源">
-              <a href="https://arena.ai/leaderboard/text?styleControl=off" target="_blank" rel="noopener noreferrer">Arena 文本榜</a>
+          <aside class="ranking-methodology" id="ranking-methodology" aria-label="AI 收录与模型榜单说明" hidden>
+            <p><strong>按用途找产品：</strong>同品牌工具嵌入主产品，卡片展示顺序不是模型排名。产品套餐、可用模型与地区限制请查看官网；音乐下载与商用授权请单独确认。</p>
+            <details><summary>模型榜单参考 · 核查于 2026-09-05</summary>
+            <p>Artificial Analysis Intelligence Index v4.2 当前将 Claude Fable 5.1（max with fallback）与 GPT-6 Astra（max）列为领先模型。Arena 文本 Overall 榜（页面日期 2026-09-02）前三为 claude-fable-5、claude-opus-4-6-high、claude-fable-5.1-max；分数置信区间重叠，不能据此断言产品绝对优劣。</p>
+            <p>两榜的模型版本、评测方法和更新时间不同，不能混合成一个排名；模型成绩也不等于 ChatGPT、Claude 等应用全部套餐的实际能力。</p>
+            <div class="ranking-source-links" aria-label="模型榜单原始来源">
+              <a href="https://arena.ai/leaderboard/text" target="_blank" rel="noopener noreferrer">Arena 文本 Overall</a>
               <a href="https://artificialanalysis.ai/models" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>
-              <a href="https://arena.ai/leaderboard/video-edit" target="_blank" rel="noopener noreferrer">Arena 视频榜</a>
-              <a href="https://a16z.com/100-gen-ai-apps-6/" target="_blank" rel="noopener noreferrer">a16z 2026 Top 100</a>
-              <a href="https://www.similarweb.com/top-websites/ai-chatbots-and-tools/" target="_blank" rel="noopener noreferrer">Similarweb 2026-07</a>
             </div>
+            </details>
           </aside>
 
           <div class="card-grid" id="card-grid" aria-live="polite"></div>
@@ -165,7 +166,7 @@
     </main>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="js/data.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/data.js?v=20260905-brand"></script>
+    <script src="js/app.js?v=20260905-brand"></script>
   </body>
 </html>

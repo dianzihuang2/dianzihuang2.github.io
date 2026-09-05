@@ -100,7 +100,7 @@ function createActions(link) {
 }
 
 function createIcon(link) {
-  const iconUrl = link.iconUrl || (link.url ? faviconFromUrl(link.url) : "");
+  const iconUrl = link.iconUrl ?? (link.url ? faviconFromUrl(link.url) : "");
   return `
     <span class="app-icon${iconUrl ? "" : " is-fallback"}"${link.color ? ` style="--icon-bg: ${link.color}"` : ""} aria-hidden="true">
       ${iconUrl ? `<img src="${iconUrl}" alt="" onerror="this.parentElement.classList.add('is-fallback'); this.remove();">` : ""}
@@ -128,7 +128,7 @@ function createAiProfile(link) {
   `;
 }
 
-function createRankingInfo(link) {
+function createRankingInfo(link, collapsible = false, includeBestFor = true) {
   if (!link.recommendationRank) return "";
 
   const sourceLinks = link.sourceIds
@@ -138,14 +138,42 @@ function createRankingInfo(link) {
     .map((source) => `<a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.label}</a>`)
     .join("");
 
-  return `
-    <span class="best-for">${link.bestFor}</span>
+  const evidence = `
     <p class="ranking-note"><strong>推荐依据：</strong>${link.rankingNote}</p>
     <div class="ranking-evidence" aria-label="${link.name} 排名依据">
       ${sourceLinks}
-      <span class="tag">核验于 ${link.verifiedAt}</span>
+      <span class="tag">资料整理于 ${link.verifiedAt}</span>
     </div>
   `;
+  return `${includeBestFor ? `<span class="best-for">${link.bestFor}</span>` : ""}${collapsible
+    ? `<details class="product-evidence"><summary>查看 ${link.name} 推荐依据</summary>${evidence}</details>`
+    : evidence}`;
+}
+
+function childProducts(link) {
+  return officialLinks.filter((item) => item.parentProduct === link.name);
+}
+
+function createProductModules(link) {
+  const children = childProducts(link);
+  const compact = children.length > 1;
+  return [...new Set(children.map((child) => child.moduleLabel || child.useCase))].map((label) => `
+    <section class="product-module${compact ? " is-compact" : ""}" aria-label="${link.name} ${label}">
+      <div class="product-module-label">${label}</div>
+      ${children.filter((child) => (child.moduleLabel || child.useCase) === label).map((child) => `
+        <div class="product-child${child.name === activeHighlightName ? " is-highlighted" : ""}" data-link-key="${encodeURIComponent(child.name)}">
+          <a class="product-child-link" href="${child.url}" target="_blank" rel="noopener noreferrer" aria-label="打开 ${child.name} 官网">
+            <div class="product-child-heading">${createIcon(child)}<strong>${child.name}</strong><span aria-hidden="true">↗</span></div>
+            ${compact ? "" : `<p>${child.description}</p><span class="product-child-open">打开 ${child.name} ↗</span>`}
+          </a>
+          <details class="product-child-details"><summary>产品详情与依据</summary>
+            ${compact ? `<p>${child.description}</p>` : ""}
+            ${createAiProfile(child)}${createRankingInfo(child)}
+            <button class="copy-button" type="button" data-copy="${child.url}" aria-label="复制 ${child.name} 官网链接">复制链接</button>
+            ${child.downloadInfo ? `<button class="download-trigger" type="button" data-download="${encodeURIComponent(child.name)}">↓ 下载</button>` : ""}
+          </details>
+        </div>`).join("")}
+    </section>`).join("");
 }
 
 function createCard(link, headingTag = "h3") {
@@ -163,11 +191,13 @@ function createCard(link, headingTag = "h3") {
 
   const topActions = [
     link.downloadInfo ? `<button class="download-trigger" type="button" data-download="${encodeURIComponent(link.name)}" aria-label="下载 ${link.name} 安装包">↓ 下载</button>` : "",
-    link.recommendationRank ? `<span class="ranking-badge">能力推荐 #${link.recommendationRank}</span>` : "",
+    link.recommendationRank ? `<span class="ranking-badge">${link.useCase}</span>` : "",
   ].join("");
+  const wide = childProducts(link).length > 1;
 
   return `
-    <article class="link-card${link.name === activeHighlightName ? " is-highlighted" : ""}" data-link-key="${encodeURIComponent(link.name)}">
+    <article class="link-card${wide ? " is-wide-product" : ""}${link.name === activeHighlightName ? " is-highlighted" : ""}" data-link-key="${encodeURIComponent(link.name)}">
+      ${wide ? '<div class="product-main">' : ""}
       <div class="card-top">
         ${createIcon(link)}
         <div class="card-heading">
@@ -178,8 +208,11 @@ function createCard(link, headingTag = "h3") {
       </div>
       <p>${link.description}</p>
       ${createAiProfile(link)}
-      ${createRankingInfo(link)}
+      ${childProducts(link).length
+        ? `<span class="best-for">${link.bestFor}</span>${wide ? "" : createProductModules(link)}${createRankingInfo(link, true, false)}`
+        : createRankingInfo(link, true)}
       ${createActions(link)}
+      ${wide ? `</div><div class="product-tools">${createProductModules(link)}</div>` : ""}
     </article>
   `;
 }
@@ -189,6 +222,12 @@ function validateAiCatalog() {
   const ranks = new Set();
 
   officialLinks.filter((link) => aiCategories.has(link.category)).forEach((link) => {
+    if (link.parentProduct) {
+      const parent = officialLinks.find((item) => item.name === link.parentProduct);
+      if (!parent || parent.parentProduct || !aiCategories.has(parent.category) || parent === link) {
+        throw new Error(`${link.name} 的品牌主产品无效`);
+      }
+    }
     const missing = requiredFields.filter((field) => !link[field]);
     if (missing.length) throw new Error(`${link.name} 缺少字段：${missing.join(", ")}`);
     if (!aiGroupOrder[link.category].includes(link.useCase)) throw new Error(`${link.name} 的用途分组无效`);
@@ -221,7 +260,8 @@ function validateDownloadCatalog() {
 
 function renderCards() {
   const filtered = officialLinks.filter((link) => {
-    const matchesCategory = link.category === activeFilter;
+    const matchesCategory = link.category === activeFilter && !officialLinks.some((parent) =>
+      parent.name === link.parentProduct && parent.category === activeFilter);
     return matchesCategory;
   });
 
@@ -229,7 +269,8 @@ function renderCards() {
   const orderedLinks = isAiFilter
     ? aiGroupOrder[activeFilter].flatMap((useCase) => filtered
       .filter((link) => link.useCase === useCase)
-      .sort((a, b) => a.recommendationRank - b.recommendationRank))
+      .sort((a, b) => Number(childProducts(b).length > 0) - Number(childProducts(a).length > 0)
+        || a.recommendationRank - b.recommendationRank))
     : filtered;
   cardGrid.classList.toggle("is-grouped", isAiFilter);
   rankingMethodology.hidden = !isAiFilter;
@@ -244,9 +285,12 @@ function renderCards() {
           <section class="ai-group" aria-labelledby="${activeFilter}-${encodeURIComponent(useCase)}">
             <div class="ai-group-heading">
               <h3 id="${activeFilter}-${encodeURIComponent(useCase)}">${useCase}</h3>
-              <p>${links.length} 个精选入口 · 按能力推荐排序</p>
+              <p>${links.length} 个产品模块 · 同品牌按用途归组</p>
             </div>
-            <div class="ai-group-grid">${links.map((link) => createCard(link, "h4")).join("")}</div>
+            ${[true, false].map((hasTools) => {
+              const group = links.filter((link) => (childProducts(link).length > 0) === hasTools);
+              return group.length ? `<div class="ai-group-grid" data-product-group="${hasTools ? "with-tools" : "standalone"}" aria-label="${useCase} · ${hasTools ? "含扩展工具" : "独立产品"}">${group.map((link) => createCard(link, "h4")).join("")}</div>` : "";
+            }).join("")}
           </section>
         `;
       })
@@ -257,9 +301,10 @@ function renderCards() {
 
   emptyState.hidden = filtered.length > 0;
   siteOverviewTitle.textContent = categoryNames[activeFilter];
-  siteOverviewCount.textContent = `${orderedLinks.length} 个`;
-  siteOverviewList.innerHTML = orderedLinks.map((link) => `
-    <button class="site-overview-link" type="button" data-overview-link="${encodeURIComponent(link.name)}" title="定位到 ${link.name}">
+  const overviewLinks = orderedLinks.flatMap((link) => [link, ...childProducts(link)]);
+  siteOverviewCount.textContent = `${overviewLinks.length} 个入口`;
+  siteOverviewList.innerHTML = overviewLinks.map((link) => `
+    <button class="site-overview-link${link.parentProduct && orderedLinks.some((parent) => parent.name === link.parentProduct) ? " is-child-product" : ""}" type="button" data-overview-link="${encodeURIComponent(link.name)}" title="定位到 ${link.name}">
       ${createIcon(link)}
       <span class="site-overview-name">${link.name}</span>
     </button>
