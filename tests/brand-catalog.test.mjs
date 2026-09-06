@@ -4,16 +4,25 @@ import vm from 'node:vm';
 
 // Exercise the actual catalog and card/search functions without browser events.
 const data = readFileSync(new URL('../js/data.js', import.meta.url), 'utf8');
+const icons = readFileSync(new URL('../js/icons.js', import.meta.url), 'utf8');
 const app = readFileSync(new URL('../js/app.js', import.meta.url), 'utf8');
+const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+assert.match(html, /<script src="js\/data\.js[^]*<script src="js\/icons\.js[^]*<script src="js\/app\.js/);
 const context = vm.createContext({
   assert, URL, iconExists: path => existsSync(new URL('../' + path, import.meta.url)),
+  iconBytes: path => readFileSync(new URL('../' + path, import.meta.url)).toString('base64'),
   document: { querySelector: () => null, querySelectorAll: () => [] },
 });
-vm.runInContext(`${data}\n${app.slice(0, app.indexOf('function validateDownloadCatalog'))}\n
+vm.runInContext(`${data}\n${icons}\n${app.slice(0, app.indexOf('function validateDownloadCatalog'))}\n
   validateAiCatalog();
   for (const link of officialLinks) {
     const path = link.iconUrl ?? (link.url ? faviconFromUrl(link.url) : '');
-    if (path) assert.ok(iconExists(path), link.name + ': missing icon ' + path);
+    if (path) {
+      assert.ok(iconExists(path), link.name + ': missing icon ' + path);
+      assert.ok(embeddedIcons[path]?.startsWith('data:image/'), link.name + ': missing embedded icon');
+      assert.equal(embeddedIcons[path].split(',')[1], iconBytes(path), path + ': rebuild icons');
+      assert.ok(createIcon(link).includes('src="' + embeddedIcons[path] + '"'), link.name + ': icon needs a separate request');
+    }
     if (link.url && new URL(link.url).hostname === 'github.com' && new URL(link.url).pathname !== '/') {
       assert.notEqual(path, 'assets/icons/github.com.png', link.name + ': repository host is not a product icon');
     }
@@ -29,12 +38,13 @@ vm.runInContext(`${data}\n${app.slice(0, app.indexOf('function validateDownloadC
     ['Excel', 'assets/icons/excel.svg'],
     ['Comet Assistant', 'assets/icons/comet.jpg'],
     ['文心', 'assets/icons/wenxin.png'],
-  ]) assert.ok(createIcon(officialLinks.find(link => link.name === name)).includes(path));
+  ]) assert.ok(createIcon(officialLinks.find(link => link.name === name)).includes(embeddedIcons[path]));
   for (const name of ['ripgrep / rg']) {
     const html = createIcon(officialLinks.find(link => link.name === name));
     assert.ok(html.includes('is-fallback'));
     assert.ok(!html.includes('<img'));
   }
+  assert.ok(createIcon({ name: 'Missing icon', iconUrl: 'assets/icons/missing.png', initials: 'MI' }).includes('is-fallback'));
   const relations = officialLinks.filter(link => link.parentProduct);
   assert.equal(relations.length, 9);
   for (const child of relations) {

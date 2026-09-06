@@ -28,6 +28,7 @@
 ├── styles.css              # 全部页面样式
 ├── js/
 │   ├── data.js             # 网站、分类、排名、照片和视频数据
+│   ├── icons.js            # 从 assets/icons/ 生成的内嵌图标数据
 │   └── app.js              # 卡片渲染、搜索、筛选、下载与弹窗交互
 ├── assets/
 │   ├── avatar.jpeg         # 头像、favicon 和 Apple 主屏图标
@@ -62,4 +63,13 @@ python3 -m http.server 8000
 | 修改页面结构、标题、导航或资源加载 | [`index.html`](index.html) |
 | 替换头像、图标、照片或视频文件 | [`assets/`](assets/) |
 
-`index.html` 末尾必须先加载 `js/data.js`，再加载 `js/app.js`；交互脚本依赖数据脚本中定义的内容。
+`index.html` 末尾按 `js/data.js` → `js/icons.js` → `js/app.js` 加载。图标随脚本数据到达，卡片、子产品、速览和下载弹窗无需再单独请求图片；没有图标的条目直接显示备用标识。首次访问仍需要下载页面和脚本。
+
+新增或替换 `assets/icons/` 下的图标后，运行以下命令（仅使用 Node.js 标准库），并更新 `index.html` 中 `js/icons.js` 的版本参数：
+
+```bash
+node scripts/build-icons.mjs
+node tests/brand-catalog.test.mjs
+```
+
+生成的 `js/icons.js` 随主站文件一同保存和发布，无需在部署时构建。

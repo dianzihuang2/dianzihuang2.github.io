@@ -100,10 +100,11 @@ function createActions(link) {
 }
 
 function createIcon(link) {
-  const iconUrl = link.iconUrl ?? (link.url ? faviconFromUrl(link.url) : "");
+  const iconPath = link.iconUrl ?? (link.url ? faviconFromUrl(link.url) : "");
+  const iconUrl = embeddedIcons[iconPath] || "";
   return `
     <span class="app-icon${iconUrl ? "" : " is-fallback"}"${link.color ? ` style="--icon-bg: ${link.color}"` : ""} aria-hidden="true">
-      ${iconUrl ? `<img src="${iconUrl}" alt="" onerror="this.parentElement.classList.add('is-fallback'); this.remove();">` : ""}
+      ${iconUrl ? `<img src="${iconUrl}" alt="" decoding="sync" onerror="this.parentElement.classList.add('is-fallback'); this.remove();">` : ""}
       <span class="app-icon-fallback">${link.initials || "▶"}</span>
     </span>
   `;
