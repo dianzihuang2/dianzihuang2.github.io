@@ -1580,24 +1580,6 @@ const officialLinks = [
     initials: "WPS",
     color: "linear-gradient(135deg, #e7392e, #ff7a59)",
   },
-  {
-    name: "香蕉锐方-蓝条-绿线9",
-    category: "other",
-    categoryLabel: "其他",
-    videoSrc: "assets/videos/banana-climbing.mp4",
-  },
-  {
-    name: "香蕉锐方-蓝条-黄线9(没过)",
-    category: "other",
-    categoryLabel: "其他",
-    videoSrc: "assets/videos/climbing-1962.mp4",
-  },
-  {
-    name: "香蕉锐方-蓝条-黄线9",
-    category: "other",
-    categoryLabel: "其他",
-    videoSrc: "assets/videos/climbing-1872.mp4",
-  },
 ];
 
 const categoryNames = {
